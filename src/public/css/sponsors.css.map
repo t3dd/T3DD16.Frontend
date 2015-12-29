@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,SAAU;EACR,UAAU,EAAE,MAAM;EAElB,aAAI;IACF,UAAU,EAAE,KAAK;ICIjB,yBAA0B;MDL5B,aAAI;QAIA,UAAU,EAAE,IAAI;ICHlB,yBAA0B;MDD5B,aAAI;QAOA,UAAU,EAAE,KAAK;EAIrB,WAAE;IACA,OAAO,EAAE,KAAK;IACd,aAAa,EAAE,MAAM",
+"sources": ["sponsors.scss","_mixins.scss"],
+"names": [],
+"file": "sponsors.css"
+}

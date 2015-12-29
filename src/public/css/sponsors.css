@@ -1,0 +1,15 @@
+.sponsors {
+  text-align: center; }
+  .sponsors img {
+    max-height: 100px; }
+    @media (min-width: 768px) {
+      .sponsors img {
+        max-height: 90px; } }
+    @media (min-width: 992px) {
+      .sponsors img {
+        max-height: 120px; } }
+  .sponsors a {
+    display: block;
+    border-bottom: 0 none; }
+
+/*# sourceMappingURL=sponsors.css.map */
