@@ -19,6 +19,27 @@ body {
   color: #000000;
   background-color: #e7e7e7; }
 
+.app-navigation {
+  background-color: #ffffff;
+  padding: 0 30px;
+  height: 65px; }
+
+.offcanvas-toggle {
+  padding: 23px 20px;
+  display: inline-block;
+  border: 0 none;
+  margin-left: -30px; }
+  @media (min-width: 768px) {
+    .offcanvas-toggle {
+      display: none; } }
+  .offcanvas-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #FF8700; }
+    .offcanvas-toggle span + span {
+      margin-top: 5px; }
+
 #header .container {
   height: 150px; }
 @media (min-width: 768px) {

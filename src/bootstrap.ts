@@ -4,6 +4,8 @@
 import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
+import {AppStates} from './app/providers/appStates';
+import {CmsService} from './app/providers/cmsService';
 // include for development builds
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 // include for production builds
@@ -25,6 +27,8 @@ function main() {
     // These are dependencies of our App
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
+    AppStates,
+    CmsService,
     ELEMENT_PROBE_PROVIDERS // remove in production
   ])
   .catch(err => console.error(err));

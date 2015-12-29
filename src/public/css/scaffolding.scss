@@ -25,8 +25,36 @@ body {
   line-height: 1.5;
   font-weight: 400;
   color: #000000;
-  //background-color: #ffffff;
   background-color: #e7e7e7;
+}
+
+.app-navigation {
+  background-color: #ffffff;
+  padding: 0 30px;
+  height: 65px;
+}
+
+.offcanvas-toggle {
+  padding: 23px 20px;
+  display: inline-block;
+  border: 0 none;
+  margin-left: -30px;
+
+  @include breakpoint(tablet) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #FF8700;
+
+    & + span {
+      margin-top: 5px;
+    }
+  }
+
 }
 
 #header {

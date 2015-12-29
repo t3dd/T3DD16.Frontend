@@ -15,8 +15,12 @@
     "src/app/app.spec.ts",
     "src/app/app.ts",
     "src/app/components/navigation/navigation.ts",
+    "src/app/components/navigation/offcanvas.ts",
     "src/app/components/page/page.ts",
     "src/app/providers/cmsService.ts",
+    "src/app/providers/appStates.ts",
+    "src/app/model/page.ts",
+    "src/app/model/states.ts",
     "src/bootstrap.ts",
     "src/vendor.ts",
     "src/polyfills.ts"

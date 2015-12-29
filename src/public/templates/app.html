@@ -1,4 +1,8 @@
-<header>
+<header class="app-navigation">
+  <a (click)="toggleOffcanvas()" class="offcanvas-toggle">
+    <span></span><span></span><span></span>
+  </a>
   <navigation></navigation>
 </header>
 <router-outlet></router-outlet>
+<offcanvas [hidden]="!states.offcanvas"></offcanvas>

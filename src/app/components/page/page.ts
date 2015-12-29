@@ -12,7 +12,7 @@ export interface ContentPage {
 
 @Component({
   selector: 'page',
-  providers: [CmsService, Title],
+  providers: [Title],
   template: `
     <header id="header">
       <div #header></div>

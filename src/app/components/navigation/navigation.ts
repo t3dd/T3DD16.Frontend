@@ -1,28 +1,23 @@
-import {Component} from 'angular2/core';
-//import {AsyncPipe} from 'angular2/common';
+import {Component, OnInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {CmsService} from './../../providers/cmsService';
-
-export interface Page {
-  title: string;
-  type: string;
-  link: string;
-  children: Page[];
-}
+import {Page} from './../../model/page';
 
 @Component({
   selector: 'navigation',
   directives: [...ROUTER_DIRECTIVES],
-  providers: [CmsService],
   pipes: [],
   styleUrls: ['./css/navigation.css'],
   templateUrl: './templates/navigation/navigation.html'
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
 
   rootpage: Page;
 
   constructor(private _cmsService: CmsService) {
+  }
+
+  ngOnInit(): any {
     this._cmsService.getNavigation().subscribe(res => this.rootpage = res.rootpage);
   }
 
