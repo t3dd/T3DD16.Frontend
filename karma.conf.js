@@ -1,133 +1,71 @@
-// @AngularClass
-var path = require('path');
-
 module.exports = function(config) {
-  var _config = {
+  var configuration = {
+    basePath: '.',
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
+    browsers: ['Chrome'],
+    reporters: ['progress', 'coverage'],
 
-
-    // list of files / patterns to load in the browser
-    files: [
-      // we are building the test environment in ./spec-bundle.js
-      { pattern: 'spec-bundle.js', watched: false }
-    ],
-
-
-    // list of files to exclude
-    exclude: [
-    ],
-
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      'spec-bundle.js': ['webpack', 'sourcemap']
-      // 'test/**/*.spec.ts': ['webpack', 'sourcemap']
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
     },
 
-    webpack: {
-
-      resolve: {
-        cache: false,
-        root: __dirname,
-        extensions: ['','.ts','.js','.json', '.css', '.html'],
-        alias: {
-          'app': 'src/app',
-          'common': 'src/common'
-        }
-      },
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [
-          {
-            test: /\.ts$/,
-            loader: 'ts-loader',
-            query: {
-              'ignoreDiagnostics': [
-                2403, // 2403 -> Subsequent variable declarations
-                2300, // 2300 Duplicate identifier
-                2374, // 2374 -> Duplicate number index signature
-                2375  // 2375 -> Duplicate string index signature
-              ]
-            },
-            exclude: [ /\.e2e\.ts$/, /node_modules/ ]
-          },
-          { test: /\.json$/, loader: 'json-loader' },
-          { test: /\.html$/, loader: 'raw-loader' },
-          { test: /\.css$/,  loader: 'raw-loader' }
-        ],
-        postLoaders: [
-          // instrument only testing sources with Istanbul
-          {
-            test: /\.(js|ts)$/,
-            include: path.resolve('src'),
-            loader: 'istanbul-instrumenter-loader',
-            exclude: [ /\.e2e\.ts$/, /node_modules/ ]
-          }
-        ]
-      },
-      stats: { colors: true, reasons: true },
-      debug: false,
-      noParse: [
-        /zone\.js\/dist\/zone-microtask\.js/,
-        /zone\.js\/dist\/long-stack-trace-zone\.js/,
-        /zone\.js\/dist\/jasmine-patch\.js/
-      ]
+    preprocessors: {
+      'app/**/!(*.spec)+(.js)': ['coverage']
     },
 
     coverageReporter: {
-      dir : 'coverage/',
+      dir: 'report/',
       reporters: [
-        { type: 'text-summary' },
-        { type: 'html' }
-      ],
+        {type: 'json', subdir: 'report-json'}
+      ]
     },
 
-    webpackServer: {
-      noInfo: true //please don't spam the console when running in karma!
+    files: [
+      {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: true},
+      {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
+      {pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/angular2.dev.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/router.dev.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/http.dev.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true},
+      {pattern: 'test-helpers/**/*.js', included: true, watched: true},
+      {pattern: 'karma-test-shim.js', included: true, watched: true},
+
+      // paths loaded via module imports
+      {pattern: 'app/**/*.js', included: false, watched: true},
+
+      // paths loaded via Angular's component compiler
+      // (these paths need to be rewritten, see proxies section)
+      {pattern: 'app/**/*.html', included: false, watched: true},
+      {pattern: 'app/**/*.css', included: false, watched: true},
+
+      // paths to support debugging with source maps in dev tools
+      {pattern: 'app/**/*.ts', included: false, watched: false},
+      {pattern: 'app/**/*.js.map', included: false, watched: false}
+    ],
+
+    // proxied base paths
+    proxies: {
+      // required for component assests fetched by Angular's compiler
+      "/app/": "/base/app/"
     },
 
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [ 'progress', 'coverage' ],
-
-
-    // web server port
     port: 9876,
-
-
-    // enable / disable colors in the output (reporters and logs)
     colors: true,
-
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
-
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
     singleRun: true
   };
 
-  config.set(_config);
+  /* Set Travis CI */
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+  }
 
+  config.set(configuration);
 };
