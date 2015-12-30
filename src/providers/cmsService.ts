@@ -12,14 +12,14 @@ export class CmsService {
    * @returns {Observable}
    */
   getContent() {
-    return this._http.get('http://t3dd16.dev' + this._location.path() + '/').map(res => res.json());
+    return this._http.get('/cms' + this._location.path() + '/').map(res => res.json());
   }
 
   /**
    * @returns {Observable}
    */
   getNavigation() {
-    return this._http.get('http://t3dd16.dev?type=1450887489').map(res => res.json());
+    return this._http.get('/cms/?type=1450887489').map(res => res.json());
   }
 
 }
