@@ -1,8 +1,9 @@
-<header class="app-navigation">
+<header class="app-navigation" flex horizontal layout center justified>
   <a (click)="toggleOffcanvas()" class="offcanvas-toggle">
     <span></span><span></span><span></span>
   </a>
   <navigation></navigation>
+  <login></login>
 </header>
 <router-outlet></router-outlet>
 <offcanvas [hidden]="!states.offcanvas"></offcanvas>

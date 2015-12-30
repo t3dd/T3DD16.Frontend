@@ -1,16 +1,17 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {FORM_PROVIDERS} from 'angular2/common';
+import {FORM_PROVIDERS, COMMON_DIRECTIVES} from 'angular2/common';
 import {PageComponent} from './components/page/page';
 import {NavigationComponent} from './components/navigation/navigation';
 import {OffcanvasComponent} from './components/navigation/offcanvas';
+import {LoginComponent} from './components/login/login';
 import {AppStates} from './providers/appStates';
 import {States} from './model/states';
 
 @Component({
   selector: 't3dd16-app',
   providers: [...FORM_PROVIDERS],
-  directives: [...ROUTER_DIRECTIVES, NavigationComponent, OffcanvasComponent],
+  directives: [...ROUTER_DIRECTIVES, ...COMMON_DIRECTIVES, NavigationComponent, OffcanvasComponent, LoginComponent],
   pipes: [],
   host: {},
   styleUrls: [

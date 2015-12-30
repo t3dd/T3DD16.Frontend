@@ -1,1 +1,16 @@
 @import "mixins";
+
+.user {
+  a {
+    border: 0 none;
+  }
+}
+
+.user__image {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  border-radius: 1000em;
+  background: #fff url(assets/images/account.svg) no-repeat 50% 50%;
+  background-size: cover;
+}
