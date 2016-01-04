@@ -19,7 +19,8 @@ var proxy = proxyMiddleware(['/cms', '/fileadmin'], {
     "^/cms" : ''
   },
   proxyTable: {
-    'localhost:3000': 'http://t3dd16.dev'
+    'localhost:3000': 'http://t3dd16.dev',
+    't3dd16.dev:3000': 'http://t3dd16.dev'
   }
 });
 
