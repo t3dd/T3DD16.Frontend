@@ -1,6 +1,7 @@
 import {Component, View, OnInit, DynamicComponentLoader, ElementRef} from 'angular2/core';
 import {Title} from 'angular2/platform/browser';
 import {CmsService} from './../../providers/cmsService';
+import {ContentLink} from './contentLink';
 
 export interface ContentPage {
   title: string;
@@ -39,7 +40,7 @@ export class PageComponent implements OnInit {
    */
   renderTemplate(template: string, anchorName: string) {
     this._dcl.loadIntoLocation(
-      this.createContentComponent(template, []),
+      this.createContentComponent(template, [ContentLink]),
       this._elementRef,
       anchorName
     );

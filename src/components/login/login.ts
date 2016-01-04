@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     }
 
     let popup = window.open('/cms/user/login/');
-    let interval: NodeJS.Timer = TimerWrapper.setInterval(() => {
+    let interval = TimerWrapper.setInterval(() => {
       if (popup == null || popup.closed) {
         TimerWrapper.clearInterval(interval);
         this.fetchUser();
