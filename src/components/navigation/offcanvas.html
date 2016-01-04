@@ -1,7 +1,12 @@
-<nav class="offcanvas">
+<nav class="offcanvas" [class.active]="states.offcanvas">
   <div class="content">
     <div class="header bg-orange">
-      <a href="/" class="logo">T3DD16</a>
+      <a [routerLink]=" ['Page', {path: ''}] " class="logo">
+        <svg viewBox="0 0 180 60">
+          <use class="logo__figure" xlink:href="#logo__figure"></use>
+          <use xlink:href="#logo__name"></use>
+        </svg>
+      </a>
     </div>
     <div *ngIf="rootpage" class="navigation" layout vertical>
       <a [routerLink]=" ['Page', {path: rootpage.link}] ">Home</a>
