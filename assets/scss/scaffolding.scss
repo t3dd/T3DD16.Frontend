@@ -63,20 +63,28 @@ body {
   }
   @include breakpoint(tablet) {
     .container {
-      height: 35vh;
       min-height: 400px;
     }
   }
 }
 
 #content {
+  display: block;
+  min-height: calc(100vh - 65px - 150px - 66px);
+
   @include breakpoint(tablet) {
+    min-height: calc(100vh - 65px - 400px - 66px);
+
     .bg:first-child .container {
       position: relative;
       top: -92px;
       margin-bottom: -102px;
     }
   }
+}
+
+.clearfix {
+  @include clearfix();
 }
 
 .bg-cover {
