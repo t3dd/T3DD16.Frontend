@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
+import {TimerWrapper} from 'angular2/src/facade/async';
 import {UserService} from '../../providers/userService';
 import {User} from '../../model/user';
-import {isJsObject} from 'angular2/src/facade/lang';
 
 @Component({
   selector: 'login',
@@ -15,32 +15,35 @@ export class LoginComponent implements OnInit {
 
   user: User;
 
-  constructor(private _userService: UserService) {
+  constructor (private _userService: UserService) {
   }
 
-  ngOnInit(): any {
+  ngOnInit (): any {
     this.fetchUser();
   }
 
-  login() {
+  login () {
     if (this.hasUser()) {
       return;
     }
 
     let popup = window.open('/cms/user/login/');
-    popup.onBeforeUnload = () => {
-      this.fetchUser();
-    };
+    let interval: NodeJS.Timer = TimerWrapper.setInterval(() => {
+      if (popup == null || popup.closed) {
+        TimerWrapper.clearInterval(interval);
+        this.fetchUser();
+      }
+    }, 200);
   }
 
   /**
    * @returns {boolean}
-     */
-  hasUser() {
+   */
+  hasUser () {
     return this.user && this.user.username;
   }
 
-  protected fetchUser() {
+  protected fetchUser () {
     this._userService.getUser().subscribe(
       res => this.user = res,
       error => console.log(error)
