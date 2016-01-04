@@ -1,4 +1,5 @@
-import {Component, View, OnInit, DynamicComponentLoader, ElementRef} from 'angular2/core';
+import {Component, View, DynamicComponentLoader, ElementRef} from 'angular2/core';
+import {OnActivate, ComponentInstruction} from 'angular2/router';
 import {Title} from 'angular2/platform/browser';
 import {CmsService} from './../../providers/cmsService';
 import {ContentLink} from './contentLink';
@@ -16,13 +17,18 @@ export interface ContentPage {
   providers: [Title],
   templateUrl: 'app/components/page/page.html'
 })
-export class PageComponent implements OnInit {
+export class PageComponent implements OnActivate {
 
   constructor(private _cmsService: CmsService, private _title: Title, private _dcl: DynamicComponentLoader, private _elementRef: ElementRef) {
   }
 
-  ngOnInit() {
-    this._cmsService.getContent().subscribe(page => this.renderPage(page));
+  routerOnActivate (next: ComponentInstruction): any {
+    return new Promise((resolve) => {
+      this._cmsService.getContent(next.urlPath).subscribe((page) => {
+        this.renderPage(page);
+        resolve(page);
+      });
+    });
   }
 
   /**

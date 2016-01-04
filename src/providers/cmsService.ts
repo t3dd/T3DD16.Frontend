@@ -1,18 +1,17 @@
 import {Injectable} from 'angular2/core';
-import {Location} from 'angular2/router';
 import {Http} from 'angular2/http';
 
 @Injectable()
 export class CmsService {
 
-  constructor(private _http: Http, private _location: Location) {
+  constructor(private _http: Http) {
   }
 
   /**
    * @returns {Observable}
    */
-  getContent() {
-    return this._http.get('/cms' + this._location.path() + '/').map(res => res.json());
+  getContent(url: string) {
+    return this._http.get('/cms/' + url + '/').map(res => res.json());
   }
 
   /**
