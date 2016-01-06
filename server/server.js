@@ -1,7 +1,8 @@
+var path = require('path');
 var express = require('express');
 var proxyMiddleware = require('http-proxy-middleware');
 var env = process.env.NODE_ENV || 'development';
-var staticFileDir = __dirname + (env === 'production' ? '/build' : '');
+var staticFileDir = path.join(__dirname, (env === 'production' ? '../build' : '..'));
 
 
 if (env === 'development') {
@@ -26,13 +27,13 @@ var proxy = proxyMiddleware(['/cms', '/fileadmin'], {
 
 var app = express();
 app.use(proxy);
-app.use('/node_modules', express.static(staticFileDir + '/node_modules'));
-app.use('/app', express.static(staticFileDir + '/app'));
-app.use('/assets', express.static(staticFileDir + '/assets'));
+app.use('/node_modules', express.static(path.join(staticFileDir, '/node_modules')));
+app.use('/app', express.static(path.join(staticFileDir, '/app')));
+app.use('/assets', express.static(path.join(staticFileDir, '/assets')));
 
 
 app.get('*', function (req, res, next) {
-  res.sendFile(staticFileDir + '/index.html')
+  res.sendFile(path.join(staticFileDir, '/index.ng2.html'));
 });
 
 app.listen(3000, function () {

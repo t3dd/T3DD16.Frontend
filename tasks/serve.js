@@ -14,7 +14,7 @@ gulp.task('serve-build', ['build'], function () {
 function startServer(env) {
   var started = false;
   return nodemon({
-    script: 'server.js',
+    script: 'server/server.js',
     env: {'NODE_ENV': env}
   }).on('start', function () {
     if (!started) {

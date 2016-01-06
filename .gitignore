@@ -2,4 +2,5 @@
 /app
 /build
 /report
+/typings
 .DS_Store

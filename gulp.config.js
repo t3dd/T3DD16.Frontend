@@ -10,7 +10,7 @@ module.exports = function () {
     images: assets + 'images/',
     fonts: assets + 'fonts/'
   };
-  var index = root + 'index.html';
+  var index = root + 'index.ng2.html';
   var tsFiles = [
     src + '**/!(*.spec)+(.ts)'
   ];
@@ -39,22 +39,6 @@ module.exports = function () {
     },
     fonts: build.path + 'fonts'
   };
-  var liveServer = {
-    dev: {
-      port: 3000,
-      host: "127.0.0.1",
-      open: '/',
-      file: "index.html",
-      wait: 1000
-    },
-    prod: {
-      port: 3001,
-      host: "127.0.0.1",
-      root: 'build/',
-      file: "index.html",
-      wait: 1000
-    }
-  };
 
   var systemjsBuild = {
     map: {
@@ -82,7 +66,6 @@ module.exports = function () {
     buildPath: buildPath,
     tsFiles: tsFiles,
     tsSpecFiles: tsSpecFiles,
-    liveServer: liveServer,
     systemjsBuild: systemjsBuild
   };
 
