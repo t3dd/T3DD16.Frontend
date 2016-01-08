@@ -3,6 +3,7 @@ var config = require('../gulp.config')();
 var ts = require('gulp-typescript');
 var tslint = require('gulp-tslint');
 var sourcemaps = require('gulp-sourcemaps');
+var inlineNg2Template = require('gulp-inline-ng2-template');
 var path = require('path');
 
 /* Initialize TS Project */
@@ -54,6 +55,7 @@ function compileTs(files) {
       base: 'src'
     })
     .pipe(sourcemaps.init())
+    //.pipe(inlineNg2Template({ base: '/' }))
     .pipe(ts(tsProject));
   tsResult.dts.pipe(gulp.dest(config.app));
   return tsResult.js

@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 
 /* Start live server dev mode */
-gulp.task('serve-dev', ['tsc-app', 'watch-ts', 'watch-sass', 'watch-html'], function () {
+gulp.task('serve-dev', ['tsc-app', 'html', 'sass', 'watch-ts', 'watch-sass', 'watch-html'], function () {
   startServer('development');
 });
 
