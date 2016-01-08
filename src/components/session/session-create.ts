@@ -1,4 +1,4 @@
-import {Component, Inject} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Control, Validators} from 'angular2/common';
 import {Router, CanActivate} from 'angular2/router';
 import {MarkdownPipe} from '../../pipes/markdown';

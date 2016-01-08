@@ -7,6 +7,14 @@ import {SessionCreateComponent} from '../session/session-create';
 import {SessionDetailComponent} from '../session/session-detail';
 
 @Component({
+  selector: 'none-page',
+  providers: [],
+  template: ''
+})
+export class NoneComponent {
+}
+
+@Component({
   selector: 'default-page',
   providers: [Title],
   templateUrl: 'app/components/page/base-page.html'
@@ -24,6 +32,7 @@ export class DefaultPageComponent extends BasePageComponent {
   templateUrl: 'app/components/page/base-page.html'
 })
 @RouteConfig([
+  {path: '/', name: 'SessionList', component: NoneComponent},
   {path: '/new', name: 'SessionCreate', component: SessionCreateComponent},
   {path: '/:session', name: 'SessionDetail', component: SessionDetailComponent}
 ])
