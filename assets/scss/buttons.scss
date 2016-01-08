@@ -28,3 +28,40 @@
 .button__white {
   background-color: #ffffff;
 }
+
+.button__close {
+  margin: 0;
+  min-width: 20px;
+  padding: 10px;
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    width: 24px;
+    border: 2px solid #FF8700;
+    border-radius: 1px;
+    transition: border .2s,transform .3s;
+    transform: translateZ(0);
+  }
+
+  &:before {
+    transform: rotate(45deg);
+    right: -2px;
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+    left: -2px;
+  }
+
+  &:hover {
+    &:before {
+      transform: rotate(135deg);
+    }
+    &:after {
+      transform: rotate(45deg);
+    }
+  }
+
+}

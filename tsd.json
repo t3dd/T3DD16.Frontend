@@ -16,6 +16,9 @@
     },
     "mime/mime.d.ts": {
       "commit": "f11e49cfb77f99678657ddfe5d43017849675c64"
+    },
+    "showdown/showdown.d.ts": {
+      "commit": "81b951f1ac437d1eb5ff5171a0bfa6c467634b13"
     }
   }
 }

@@ -4,7 +4,7 @@
     <span>Login with typo3.org</span>
   </a>
   <span layout horizontal center *ngIf="hasUser()">
-    <span class="user__image"></span>
+    <span class="user__image" [style.backgroundImage]="'url(' + user.image + ')'"></span>
     <span>{{user.name}}</span>
   </span>
 

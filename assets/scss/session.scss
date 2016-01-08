@@ -1,0 +1,47 @@
+@import "mixins";
+
+.card__content {
+  cursor: pointer;
+  padding: 16px;
+
+  @include breakpoint(tablet) {
+    padding: 16px 32px;
+  }
+
+  &:hover, &:focus {
+    background: #f2f2f2;
+  }
+  &.selected {
+    background: #e6e6e6;
+  }
+}
+
+.user__image {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff url(assets/images/account.svg) no-repeat 50% 50%;
+  background-size: cover;
+  margin: 0 8px 0 0;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+dl {
+  margin: 0;
+}
+dt,dd {
+  display: inline;
+}
+dt {
+  margin-left: .5em;
+  font-weight: 700;
+}
+dt:first-child {
+  margin-left: 0;
+}
+dd {
+  margin-left: 0;
+}

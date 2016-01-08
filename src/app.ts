@@ -1,7 +1,7 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS, COMMON_DIRECTIVES} from 'angular2/common';
-import {PageComponent} from './components/page/page';
+import {DefaultPageComponent, SessionPageComponent} from './components/page/pages';
 
 import {NavigationComponent} from './components/navigation/navigation';
 import {OffcanvasComponent} from './components/navigation/offcanvas';
@@ -16,7 +16,7 @@ import {States} from './model/states';
   selector: 't3dd16-app',
   providers: [...FORM_PROVIDERS],
   directives: [
-    ...ROUTER_DIRECTIVES, ...COMMON_DIRECTIVES,
+    ROUTER_DIRECTIVES, COMMON_DIRECTIVES,
     NavigationComponent, OffcanvasComponent,
     LoginComponent, FooterComponent,
     LoadingComponent
@@ -25,17 +25,22 @@ import {States} from './model/states';
   host: {},
   styleUrls: [
     'assets/styles/scaffolding.css',
+    'assets/styles/animation.css',
     'assets/styles/layout.css',
     'assets/styles/type.css',
     'assets/styles/buttons.css',
+    'assets/styles/forms.css',
     'assets/styles/card.css',
+    'assets/styles/modal.css',
     'assets/styles/sponsors.css'
   ],
   templateUrl: 'app/app.html',
   encapsulation: ViewEncapsulation.None
 })
 @RouteConfig([
-  {path: '/:path', name: 'Page', component: PageComponent}
+  {path: '/', name: 'Page', component: DefaultPageComponent, useAsDefault: true},
+  {path: '/session/...', name: 'SessionPage', component: SessionPageComponent},
+  {path: '/:path', name: 'Page', component: DefaultPageComponent},
 ])
 export class App {
 
