@@ -6,10 +6,12 @@ var useref = require('gulp-useref');
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var cssnano = require('gulp-cssnano');
+var htmlmin = require('gulp-htmlmin');
 var Builder = require('systemjs-builder');
 
 /* Prepare build using SystemJS Builder */
 gulp.task('build', function (done) {
+  config.env = 'production';
   //runSequence('test', 'build-sjs', done);
   runSequence('build-sjs', done);
 });
@@ -40,13 +42,8 @@ gulp.task('build-sjs', function (done) {
 
 /* Concat and minify/uglify all css, js, and copy fonts */
 gulp.task('build-assets', function (done) {
-  runSequence('clean-build', ['html', 'sass', 'fonts'], function () {
+  runSequence('clean-build', ['sass', 'fonts'], function () {
     done();
-
-    gulp.src(config.app + '**/*.html', {
-        base: config.app
-      })
-      .pipe(gulp.dest(config.build.app));
 
     gulp.src(config.app + '**/*.css', {
         base: config.app
@@ -69,6 +66,11 @@ gulp.task('build-assets', function (done) {
       .pipe(useref())
       .pipe(gulpif('*.js', uglify()))
       .pipe(gulpif('*.css', cssnano()))
+      .pipe(gulpif('*.html', htmlmin({
+        collapseWhitespace: true,
+        minifyJS: true,
+        minifyCSS: true
+      })))
       .pipe(gulp.dest(config.build.path));
   });
 });

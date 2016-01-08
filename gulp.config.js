@@ -1,4 +1,6 @@
-module.exports = function () {
+var config = {};
+(function () {
+  var env = 'development';
   var root = '';
   var src = root + 'src/';
   var app = root + 'app/';
@@ -53,7 +55,8 @@ module.exports = function () {
     }
   };
 
-  var config = {
+  config = {
+    env: env,
     root: root,
     src: src,
     app: app,
@@ -69,5 +72,7 @@ module.exports = function () {
     systemjsBuild: systemjsBuild
   };
 
+})();
+module.exports = function () {
   return config;
 };

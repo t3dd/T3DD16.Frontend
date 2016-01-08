@@ -4,6 +4,7 @@ var ts = require('gulp-typescript');
 var tslint = require('gulp-tslint');
 var sourcemaps = require('gulp-sourcemaps');
 var inlineNg2Template = require('gulp-inline-ng2-template');
+var gulpif = require('gulp-if');
 var path = require('path');
 
 /* Initialize TS Project */
@@ -23,7 +24,7 @@ gulp.task('tsc', ['clean-ts'], function () {
   return compileTs(tsFiles);
 });
 
-gulp.task('tsc-app', ['clean-ts-app'], function () {
+gulp.task('tsc-app', ['clean-ts-app', 'html'], function () {
   return compileTs(config.tsFiles);
 });
 
@@ -55,7 +56,7 @@ function compileTs(files) {
       base: 'src'
     })
     .pipe(sourcemaps.init())
-    //.pipe(inlineNg2Template({ base: '/' }))
+    .pipe(gulpif(config.env === 'production', inlineNg2Template({ base: '/' })))
     .pipe(ts(tsProject));
   tsResult.dts.pipe(gulp.dest(config.app));
   return tsResult.js
