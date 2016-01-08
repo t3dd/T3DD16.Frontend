@@ -1,5 +1,7 @@
+declare function ga(command: string, type: string);
+
 import {Component, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS, COMMON_DIRECTIVES} from 'angular2/common';
 import {DefaultPageComponent, SessionPageComponent} from './components/page/pages';
 
@@ -46,11 +48,14 @@ export class App {
 
   states: States;
 
-  constructor(private _AppStates: AppStates) {
-    this.states = this._AppStates.states;
+  constructor(private appStates: AppStates, router: Router) {
+    this.states = this.appStates.states;
+    router.subscribe((url) => {
+      ga('send', 'pageview');
+    });
   }
 
   toggleOffcanvas() {
-    this._AppStates.toggleOffcanvas();
+    this.appStates.toggleOffcanvas();
   }
 }

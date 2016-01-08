@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Control, Validators} from 'angular2/common';
 import {Router, CanActivate} from 'angular2/router';
+import {Title} from 'angular2/platform/browser';
 import {MarkdownPipe} from '../../pipes/markdown';
 import {MdInputContainer, MdInput, MdTextarea} from '../material/input/input';
 import {SessionService} from '../../providers/sessionService';
@@ -8,7 +9,7 @@ import {SessionService} from '../../providers/sessionService';
 @Component({
   selector: 'session-create',
   directives: [FORM_DIRECTIVES, MdInputContainer, MdInput, MdTextarea],
-  providers: [SessionService],
+  providers: [SessionService, Title],
   pipes: [MarkdownPipe],
   templateUrl: 'app/components/session/session-create.html'
 })
@@ -23,7 +24,8 @@ export class SessionCreateComponent {
   description: Control;
   form: ControlGroup;
 
-  constructor(private _router: Router, private builder: FormBuilder, private sessionService: SessionService) {
+  constructor(private router: Router, private builder: FormBuilder, private sessionService: SessionService, protected _title: Title) {
+    this._title.setTitle('Create ' + this._title.getTitle());
     this.title = new Control('', Validators.required);
     this.description = new Control('', Validators.required);
     this.form = builder.group({
@@ -33,7 +35,8 @@ export class SessionCreateComponent {
   }
 
   close() {
-    this._router.navigateByUrl('/session');
+    this._title.setTitle(this._title.getTitle().substring(7));
+    this.router.navigateByUrl('/session');
   }
 
   onSubmit() {
