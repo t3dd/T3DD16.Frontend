@@ -16,7 +16,7 @@
           </md-input-container>
           <md-input-container [class.md-input-invalid]="description.dirty && !description.valid">
             <label for="description">Describe your session (supports markdown)</label>
-            <textarea rows="5" id="description" required  ngControl="description"></textarea>
+            <textarea rows="5" id="description" required ngControl="description"></textarea>
             <p class="md-input-error" *ngIf="description.dirty && !description.valid">
               Please add a session description
             </p>

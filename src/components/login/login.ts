@@ -15,14 +15,14 @@ export class LoginComponent implements OnInit {
 
   user: User;
 
-  constructor (private _userService: UserService) {
+  constructor(private _userService: UserService) {
   }
 
-  ngOnInit (): any {
+  ngOnInit(): any {
     this.fetchUser();
   }
 
-  login () {
+  login() {
     if (this.hasUser()) {
       return;
     }
@@ -39,11 +39,11 @@ export class LoginComponent implements OnInit {
   /**
    * @returns {boolean}
    */
-  hasUser () {
+  hasUser() {
     return this.user && this.user.username;
   }
 
-  protected fetchUser () {
+  protected fetchUser() {
     this._userService.getUser().subscribe(
       res => this.user = res,
       error => console.log(error)

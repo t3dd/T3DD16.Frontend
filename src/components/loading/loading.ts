@@ -14,7 +14,7 @@ import {Router} from 'angular2/router';
 export class LoadingComponent {
   router: Router;
 
-  constructor (router: Router) {
+  constructor(router: Router) {
     this.router = router;
   }
 }

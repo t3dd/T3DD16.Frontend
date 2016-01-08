@@ -20,7 +20,7 @@ export class NoneComponent {
   templateUrl: 'app/components/page/base-page.html'
 })
 export class DefaultPageComponent extends BasePageComponent {
-  constructor (protected _cms: CmsService, protected _title: Title, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
+  constructor(protected _cms: CmsService, protected _title: Title, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
     super();
   }
 }
@@ -37,7 +37,7 @@ export class DefaultPageComponent extends BasePageComponent {
   {path: '/:session', name: 'SessionDetail', component: SessionDetailComponent}
 ])
 export class SessionPageComponent extends BasePageComponent {
-  constructor (protected _cms: CmsService, protected _title: Title, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
+  constructor(protected _cms: CmsService, protected _title: Title, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
     super();
   }
 }

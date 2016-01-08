@@ -23,7 +23,7 @@ export class SessionCreateComponent {
   description: Control;
   form: ControlGroup;
 
-  constructor (private _router: Router, private builder: FormBuilder, private sessionService: SessionService) {
+  constructor(private _router: Router, private builder: FormBuilder, private sessionService: SessionService) {
     this.title = new Control('', Validators.required);
     this.description = new Control('', Validators.required);
     this.form = builder.group({
@@ -32,7 +32,7 @@ export class SessionCreateComponent {
     });
   }
 
-  close () {
+  close() {
     this._router.navigateByUrl('/session');
   }
 

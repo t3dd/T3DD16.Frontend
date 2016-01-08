@@ -1,24 +1,18 @@
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {HttpCache} from './httpCache';
 
 @Injectable()
 export class CmsService {
 
-  constructor(private _http: Http) {
+  constructor(private http: HttpCache) {
   }
 
-  /**
-   * @returns {Observable}
-   */
   getContent(url: string) {
-    return this._http.get('/cms/' + url + '/').map(res => res.json());
+    return this.http.get('/cms/' + url + '/');
   }
 
-  /**
-   * @returns {Observable}
-   */
   getNavigation() {
-    return this._http.get('/cms/?type=1450887489').map(res => res.json());
+    return this.http.get('/cms/?type=1450887489');
   }
 
 }

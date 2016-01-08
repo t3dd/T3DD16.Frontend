@@ -1,21 +1,15 @@
 import {Injectable} from 'angular2/core';
-import {Http, Headers} from 'angular2/http';
 import {Session} from '../model/session';
+import {HttpCache} from './httpCache';
 
 @Injectable()
 export class SessionService {
 
-  protected _sessions: Session[];
-  protected headers: Headers;
-
-  constructor(private http: Http) {
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
+  constructor(private http: HttpCache) {
   }
 
   get() {
-    // @TODO Add cache
-    return this.http.get('/cms/session.json', {headers: this.headers}).map(res => res.json());
+    return this.http.get('/cms/session.json');
   }
 
   getByPath(path) {
@@ -28,7 +22,7 @@ export class SessionService {
   }
 
   create(session: Session) {
-    return this.http.post('/cms/session.json', JSON.stringify(session), {headers: this.headers}).map(res => res.json());
+    return this.http.post('/cms/session.json', session);
   }
 
 }

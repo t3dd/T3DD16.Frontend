@@ -1,28 +1,22 @@
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {HttpCache} from './httpCache';
 
 @Injectable()
 export class UserService {
 
-  constructor(private _http: Http) {
+  constructor(private http: HttpCache) {
   }
 
-  /**
-   * @returns {Observable}
-   */
   getUser() {
-    return this._http.get('/cms/user/me.json').map(res => res.json());
+    return this.http.get('/cms/user/me.json');
   }
 
   login() {
-    return this._http.get('/cms/user/login').map(res => res.json());
+    return this.http.get('/cms/user/login');
   }
 
-  /**
-   * @returns {Observable}
-   */
   logout() {
-    return this._http.get('/cms/user/logout.json').map(res => res.json());
+    return this.http.get('/cms/user/logout.json');
   }
 
 }

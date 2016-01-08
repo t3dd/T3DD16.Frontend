@@ -13,10 +13,10 @@ import {Router} from 'angular2/router';
 export class ContentLink {
   href: string;
 
-  constructor (private _router: Router) {
+  constructor(private _router: Router) {
   }
 
-  onClick (): boolean {
+  onClick(): boolean {
     if (isString(this.href) && this._isInternalLink(this.href)) {
       this._router.navigateByUrl(this.href);
       return false;
@@ -24,7 +24,7 @@ export class ContentLink {
     return true;
   }
 
-  private _isInternalLink (link: string): boolean {
+  private _isInternalLink(link: string): boolean {
     if (link.indexOf('mailto') !== -1) {
       return false;
     } else if (link.indexOf('http') !== -1) {

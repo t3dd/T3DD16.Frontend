@@ -23,13 +23,13 @@ export class MdInputContainer implements AfterContentChecked {
   // Whether the input inside of this container has focus.
   inputHasFocus: boolean;
 
-  constructor (@Attribute('id') id: string) {
+  constructor(@Attribute('id') id: string) {
     this._input = null;
     this.inputHasValue = false;
     this.inputHasFocus = false;
   }
 
-  ngAfterContentChecked () {
+  ngAfterContentChecked() {
     // Enforce that this directive actually contains a text input.
     if (this._input == null) {
       throw 'No <input> or <textarea> found inside of <md-input-container>';
@@ -37,7 +37,7 @@ export class MdInputContainer implements AfterContentChecked {
   }
 
   /** Registers the child MdInput or MdTextarea. */
-  registerInput (input) {
+  registerInput(input) {
     if (this._input != null) {
       throw 'Only one text input is allowed per <md-input-container>.';
     }
@@ -74,8 +74,8 @@ export class MdInput {
   mdChange: EventEmitter<any>;
   mdFocusChange: EventEmitter<any>;
 
-  constructor (@Attribute('value') value: string, @SkipSelf() @Host() container: MdInputContainer,
-               @Attribute('id') id: string) {
+  constructor(@Attribute('value') value: string, @SkipSelf() @Host() container: MdInputContainer,
+              @Attribute('id') id: string) {
     this.value = value == null ? '' : value;
     this.mdChange = new EventEmitter();
     this.mdFocusChange = new EventEmitter();
@@ -83,12 +83,12 @@ export class MdInput {
     container.registerInput(this);
   }
 
-  updateValue (event) {
+  updateValue(event) {
     this.value = event.target.value;
     ObservableWrapper.callEmit(this.mdChange, this.value);
   }
 
-  setHasFocus (hasFocus: boolean) {
+  setHasFocus(hasFocus: boolean) {
     ObservableWrapper.callEmit(this.mdFocusChange, hasFocus);
   }
 }
@@ -111,8 +111,8 @@ export class MdTextarea {
   mdChange: EventEmitter<any>;
   mdFocusChange: EventEmitter<any>;
 
-  constructor (@Attribute('value') value: string, @SkipSelf() @Host() container: MdInputContainer,
-               @Attribute('id') id: string) {
+  constructor(@Attribute('value') value: string, @SkipSelf() @Host() container: MdInputContainer,
+              @Attribute('id') id: string) {
     this.value = value == null ? '' : value;
     this.mdChange = new EventEmitter();
     this.mdFocusChange = new EventEmitter();
@@ -120,12 +120,12 @@ export class MdTextarea {
     container.registerInput(this);
   }
 
-  updateValue (event) {
+  updateValue(event) {
     this.value = event.target.value;
     ObservableWrapper.callEmit(this.mdChange, this.value);
   }
 
-  setHasFocus (hasFocus: boolean) {
+  setHasFocus(hasFocus: boolean) {
     ObservableWrapper.callEmit(this.mdFocusChange, hasFocus);
   }
 }

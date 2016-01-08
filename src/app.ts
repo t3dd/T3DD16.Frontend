@@ -46,11 +46,11 @@ export class App {
 
   states: States;
 
-  constructor (private _AppStates: AppStates) {
+  constructor(private _AppStates: AppStates) {
     this.states = this._AppStates.states;
   }
 
-  toggleOffcanvas () {
+  toggleOffcanvas() {
     this._AppStates.toggleOffcanvas();
   }
 }

@@ -12,8 +12,10 @@ import {Session} from '../../model/session';
 })
 export class SessionComponent {
 
-  @Input() session: Session;
-  @Output() select = new EventEmitter();
+  @Input()
+  session: Session;
+  @Output()
+  select = new EventEmitter();
 
   onClick() {
     this.select.emit(this.session);

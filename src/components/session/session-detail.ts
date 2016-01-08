@@ -12,14 +12,14 @@ import {MarkdownPipe} from '../../pipes/markdown';
   styleUrls: ['assets/styles/session.css'],
   templateUrl: 'app/components/session/session-detail.html'
 })
-export class SessionDetailComponent implements OnActivate{
+export class SessionDetailComponent implements OnActivate {
 
   session: Session;
 
-  constructor (private _sessionService: SessionService, private _router: Router) {
+  constructor(private _sessionService: SessionService, private _router: Router) {
   }
 
-  routerOnActivate (next: ComponentInstruction): any {
+  routerOnActivate(next: ComponentInstruction): any {
     return new Promise((resolve) => {
       this._sessionService.getByPath(next.urlPath).subscribe((session) => {
         this.session = session;
@@ -28,7 +28,7 @@ export class SessionDetailComponent implements OnActivate{
     });
   }
 
-  close () {
+  close() {
     this._router.navigateByUrl('/session');
   }
 

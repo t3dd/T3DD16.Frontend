@@ -1,4 +1,6 @@
 <div *ngIf="rootpage" class="navigation" layout horizontal center>
   <a [routerLink]=" ['Page', {path: rootpage.link}] " class="logo" inline center-center horizontal layout>T3DD16</a>
-  <a *ngFor="#page of rootpage.children" [routerLink]=" ['Page', {path: page.link}] " inline center-center horizontal layout>{{page.title}}</a>
+  <a *ngFor="#page of rootpage.children"
+     [routerLink]="(page.link === 'session' ? ['SessionPage', 'SessionList'] : ['Page', {path: page.link}]) " inline
+     center-center horizontal layout>{{page.title}}</a>
 </div>

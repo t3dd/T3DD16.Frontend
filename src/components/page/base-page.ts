@@ -20,7 +20,7 @@ export class BasePageComponent implements OnActivate {
   protected _dcl: DynamicComponentLoader;
   protected _elementRef: ElementRef;
 
-  routerOnActivate (next: ComponentInstruction): any {
+  routerOnActivate(next: ComponentInstruction): any {
     return new Promise((resolve) => {
       this._cms.getContent(next.urlPath).subscribe((page) => {
         this.renderPage(page);
@@ -32,7 +32,7 @@ export class BasePageComponent implements OnActivate {
   /**
    * @param {ContentPage} page
    */
-  renderPage (page: ContentPage) {
+  renderPage(page: ContentPage) {
     this._title.setTitle(page.title);
     this.renderTemplate(page.header, 'header');
     this.renderTemplate(page.content, 'content');
@@ -42,7 +42,7 @@ export class BasePageComponent implements OnActivate {
    * @param {String} template
    * @param {String} anchorName
    */
-  renderTemplate (template: string, anchorName: string) {
+  renderTemplate(template: string, anchorName: string) {
     this._dcl.loadIntoLocation(
       this.createContentComponent(template, [ContentLink, SessionListComponent]),
       this._elementRef,
@@ -55,7 +55,7 @@ export class BasePageComponent implements OnActivate {
    * @param {Array} directives
    * @returns {ContentComponent}
    */
-  createContentComponent (template: string, directives = []) {
+  createContentComponent(template: string, directives = []) {
     @Component({selector: 'content-component'})
     @View({template, directives})
     class ContentComponent {
