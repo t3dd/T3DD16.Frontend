@@ -10,6 +10,9 @@ import {MarkdownPipe} from '../../pipes/markdown';
   selector: 'session-detail',
   providers: [SessionService],
   pipes: [MarkdownPipe],
+  host: {
+    '(body:keydown)': 'documentKeypress($event)',
+  },
   styleUrls: ['assets/styles/session.css'],
   templateUrl: 'app/components/session/session-detail.html'
 })
@@ -17,22 +20,28 @@ export class SessionDetailComponent implements OnActivate {
 
   session: Session;
 
-  constructor(private _sessionService: SessionService, private _router: Router, protected _title: Title) {
+  constructor(private sessionService: SessionService, private router: Router, protected title: Title) {
   }
 
   routerOnActivate(next: ComponentInstruction): any {
     return new Promise((resolve) => {
-      this._sessionService.getByPath(next.urlPath).subscribe((session) => {
+      this.sessionService.getByPath(next.urlPath).subscribe((session) => {
         this.session = session;
-        this._title.setTitle(this.session.title  + ' - ' + this._title.getTitle());
+        this.title.setTitle(this.session.title + ' - ' + this.title.getTitle());
         resolve(session);
       });
     });
   }
 
   close() {
-    this._title.setTitle(this._title.getTitle().substring(this.session.title.length + 3));
-    this._router.navigateByUrl('/session');
+    this.title.setTitle(this.title.getTitle().substring(this.session.title.length + 3));
+    this.router.navigateByUrl('/session');
+  }
+
+  documentKeypress(event: KeyboardEvent) {
+    if (event.keyCode === 27) {
+      this.close();
+    }
   }
 
 }
