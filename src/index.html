@@ -99,31 +99,6 @@
     ga('globalRollup.set', 'anonymizeIp', true);
   </script>
 
-  <!-- build:js assets/bundle.js -->
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
-  <!-- endbuild -->
-
-  <!-- build:remove -->
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-  <script src="node_modules/angular2/bundles/router.dev.js"></script>
-  <script src="node_modules/angular2/bundles/http.dev.js"></script>
-  <script src="node_modules/showdown/dist/showdown.min.js"></script>
-  <!-- endbuild -->
-
-  <script>
-    System.config({
-      packages: {
-        app: {
-          format: 'register',
-          defaultExtension: 'js'
-        }
-      }
-    });
-    System.import('app/boot').then(null, console.error.bind(console));
-  </script>
-
 </head>
 <body fullbleed>
 
@@ -137,6 +112,27 @@
     </div>
   </loading>
 </t3dd16-app>
+
+<!-- build:js bundle.js -->
+<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+<script src="node_modules/systemjs/dist/system-csp-production.js"></script>
+<!-- endbuild -->
+
+<script>
+  System.config({
+    defaultJSExtensions: true,
+    map: {
+      'typescript': 'node_modules/typescript/lib/typescript.js',
+      'angular2': 'node_modules/angular2',
+      'angular2-universal-preview': 'node_modules/angular2-universal-preview/dist/client/index',
+      'rxjs': 'node_modules/rxjs'
+    }
+  });
+  System.import('client.js')
+    .catch(function(err){
+      console.error(err);
+    });
+</script>
 
 <svg width="0" height="0" hidden>
   <defs>

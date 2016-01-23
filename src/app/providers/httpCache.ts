@@ -11,11 +11,12 @@ export class HttpCache {
 
   constructor(private http: Http) {
     this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Accept', 'application/json');
   }
 
   get(url: string) {
     if (!StringMapWrapper.contains(this.cache, url)) {
-      let request = this.http.get(url).map(res => res.json()).share();
+      let request = this.http.get(url, {headers: this.headers}).map(res => res.json()).share();
       StringMapWrapper.set(this.cache, url, request);
     }
 

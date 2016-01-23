@@ -5,17 +5,23 @@
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
+    "zone/zone.d.ts": {
+      "commit": "31e7317c9a0793857109236ef7c7f223305a8aa9"
+    },
+    "es6-shim/es6-shim.d.ts": {
+      "commit": "31e7317c9a0793857109236ef7c7f223305a8aa9"
+    },
     "express/express.d.ts": {
-      "commit": "f11e49cfb77f99678657ddfe5d43017849675c64"
+      "commit": "31e7317c9a0793857109236ef7c7f223305a8aa9"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "f11e49cfb77f99678657ddfe5d43017849675c64"
+      "commit": "31e7317c9a0793857109236ef7c7f223305a8aa9"
     },
     "node/node.d.ts": {
-      "commit": "f11e49cfb77f99678657ddfe5d43017849675c64"
+      "commit": "31e7317c9a0793857109236ef7c7f223305a8aa9"
     },
     "mime/mime.d.ts": {
-      "commit": "f11e49cfb77f99678657ddfe5d43017849675c64"
+      "commit": "31e7317c9a0793857109236ef7c7f223305a8aa9"
     },
     "showdown/showdown.d.ts": {
       "commit": "81b951f1ac437d1eb5ff5171a0bfa6c467634b13"

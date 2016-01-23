@@ -50,9 +50,9 @@ export class App {
 
   constructor(private appStates: AppStates, router: Router) {
     this.states = this.appStates.states;
-    router.subscribe((url) => {
-      ga('send', 'pageview');
-    });
+    //router.subscribe((url) => {
+    //  ga('send', 'pageview');
+    //});
   }
 
   toggleOffcanvas() {

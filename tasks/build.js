@@ -19,16 +19,24 @@ gulp.task('build', function (done) {
 gulp.task('build-sjs', function (done) {
   runSequence('tsc-app', 'build-assets', buildSJS);
   function buildSJS() {
-    var builder = new Builder('.');
+    var builder = new Builder(config.app);
     builder.config(config.systemjsBuild);
     builder.loader.defaultJSExtensions = true;
     builder
-      .bundle(config.app + 'boot',
-        config.build.path + config.app + 'boot.js',
+      .bundle('client',
+        config.build.path + 'client.js',
         {
-          minify: true,
-          globalDefs: {DEBUG: false}
-        })
+          minify: false,
+          globalDefs: {DEBUG: false},
+          fetch: function (load, fetch) {
+            if (load.name.indexOf('node_modules') !== -1) {
+              load.name = load.name.replace('dist/node_modules', 'node_modules');
+              load.address = load.name;
+            }
+            return fetch(load);
+          }
+        }
+      )
       .then(function () {
         console.log('Build complete');
         done();
@@ -45,25 +53,13 @@ gulp.task('build-assets', function (done) {
   runSequence('clean-build', ['sass', 'fonts'], function () {
     done();
 
-    gulp.src(config.app + '**/*.css', {
-        base: config.app
-      })
-      .pipe(cssnano())
-      .pipe(gulp.dest(config.build.app));
-
-    gulp.src(config.assetsPath.styles + '**/*.css', {
-        base: config.assetsPath.styles
-      })
-      .pipe(cssnano())
-      .pipe(gulp.dest(config.build.assetPath + 'styles'));
-
     gulp.src(config.assetsPath.images + '**/*.*', {
         base: config.assetsPath.images
       })
       .pipe(gulp.dest(config.build.assetPath + 'images'));
 
     return gulp.src(config.index)
-      .pipe(useref())
+      .pipe(useref({searchPath: '.'}))
       .pipe(gulpif('*.js', uglify()))
       .pipe(gulpif('*.css', cssnano()))
       .pipe(gulpif('*.html', htmlmin({

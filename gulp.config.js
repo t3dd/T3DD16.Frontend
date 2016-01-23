@@ -3,16 +3,16 @@ var config = {};
   var env = 'development';
   var root = '';
   var src = root + 'src/';
-  var app = root + 'app/';
+  var app = root + 'dist/';
   var testHelper = root + 'test-helpers/';
   var assets = root + 'assets/';
   var assetsPath = {
     scss: assets + 'scss/',
-    styles: assets + 'styles/',
+    styles: app + 'assets/styles/',
     images: assets + 'images/',
     fonts: assets + 'fonts/'
   };
-  var index = root + 'index.ng2.html';
+  var index = src + 'index.html';
   var tsFiles = [
     src + '**/!(*.spec)+(.ts)'
   ];
@@ -43,15 +43,13 @@ var config = {};
   };
 
   var systemjsBuild = {
+    baseURL: app,
+    defaultJSExtensions: true,
     map: {
+      'typescript': 'node_modules/typescript/lib/typescript.js',
       'angular2': 'node_modules/angular2',
+      'angular2-universal-preview': 'node_modules/angular2-universal-preview/dist/client/index',
       'rxjs': 'node_modules/rxjs'
-    },
-    packages: {
-      app: {
-        format: 'register',
-        defaultExtension: 'js'
-      }
     }
   };
 

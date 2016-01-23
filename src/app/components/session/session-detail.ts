@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
 import {Router, OnActivate, ComponentInstruction} from 'angular2/router';
-import {Title} from 'angular2/platform/browser';
 
 import {SessionService} from '../../providers/sessionService';
 import {Session} from '../../model/session';
@@ -20,21 +19,19 @@ export class SessionDetailComponent implements OnActivate {
 
   session: Session;
 
-  constructor(private sessionService: SessionService, private router: Router, protected title: Title) {
+  constructor(private sessionService: SessionService, private router: Router) {
   }
 
   routerOnActivate(next: ComponentInstruction): any {
     return new Promise((resolve) => {
       this.sessionService.getByPath(next.urlPath).subscribe((session) => {
         this.session = session;
-        this.title.setTitle(this.session.title + ' - ' + this.title.getTitle());
         resolve(session);
       });
     });
   }
 
   close() {
-    this.title.setTitle(this.title.getTitle().substring(this.session.title.length + 3));
     this.router.navigateByUrl('/session');
   }
 

@@ -1,6 +1,5 @@
 import {Component, DynamicComponentLoader, ElementRef} from 'angular2/core';
 import {RouteConfig, RouterOutlet} from 'angular2/router';
-import {Title} from 'angular2/platform/browser';
 import {CmsService} from './../../providers/cmsService';
 import {BasePageComponent} from './base-page';
 import {SessionCreateComponent} from '../session/session-create';
@@ -16,11 +15,11 @@ export class NoneComponent {
 
 @Component({
   selector: 'default-page',
-  providers: [Title],
+  providers: [],
   templateUrl: 'app/components/page/base-page.html'
 })
 export class DefaultPageComponent extends BasePageComponent {
-  constructor(protected _cms: CmsService, protected _title: Title, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
+  constructor(protected _cms: CmsService, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
     super();
   }
 }
@@ -28,7 +27,7 @@ export class DefaultPageComponent extends BasePageComponent {
 @Component({
   selector: 'session-page',
   directives: [RouterOutlet],
-  providers: [Title],
+  providers: [],
   templateUrl: 'app/components/page/base-page.html'
 })
 @RouteConfig([
@@ -37,7 +36,7 @@ export class DefaultPageComponent extends BasePageComponent {
   {path: '/:session', name: 'SessionDetail', component: SessionDetailComponent}
 ])
 export class SessionPageComponent extends BasePageComponent {
-  constructor(protected _cms: CmsService, protected _title: Title, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
+  constructor(protected _cms: CmsService, protected _dcl: DynamicComponentLoader, protected _elementRef: ElementRef) {
     super();
   }
 }

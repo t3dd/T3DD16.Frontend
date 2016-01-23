@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 
 /* Start live server dev mode */
-gulp.task('serve-dev', ['tsc-app', 'html', 'sass', 'watch-ts', 'watch-sass', 'watch-html'], function () {
+gulp.task('serve-dev', ['tsc-app', 'watch-ts', 'watch-sass', 'watch-html'], function () {
   startServer('development');
 });
 
@@ -12,13 +12,15 @@ gulp.task('serve-build', ['build'], function () {
 });
 
 function startServer(env) {
-  var started = false;
   return nodemon({
-    script: 'server/server.js',
+    watch: [
+      'src'
+    ],
+    ext: 'js ts json html',
+    script: 'src/server.js',
     env: {'NODE_ENV': env}
-  }).on('start', function () {
-    if (!started) {
-      started = true;
-    }
-  });
+  })
+    .on('restart', function () {
+      //gulp.run(['build']);
+    });
 }

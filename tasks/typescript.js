@@ -24,7 +24,7 @@ gulp.task('tsc', ['clean-ts'], function () {
   return compileTs(tsFiles);
 });
 
-gulp.task('tsc-app', ['clean-ts-app', 'html'], function () {
+gulp.task('tsc-app', ['clean-ts-app', 'sass', 'html'], function () {
   return compileTs(config.tsFiles);
 });
 
@@ -56,7 +56,8 @@ function compileTs(files) {
       base: 'src'
     })
     .pipe(sourcemaps.init())
-    .pipe(gulpif(config.env === 'production', inlineNg2Template({ base: '/' })))
+    .pipe(gulpif(config.env === 'production', inlineNg2Template({ base: '/dist' })))
+    .pipe(inlineNg2Template({ base: '/dist' }))
     .pipe(ts(tsProject));
   tsResult.dts.pipe(gulp.dest(config.app));
   return tsResult.js
