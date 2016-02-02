@@ -1,0 +1,10 @@
+<span *ngIf="session.speakers && session.speakers[0]" class="user__image" [style.backgroundImage]="'url(' + session.speakers[0].image + ')'"></span>
+<div layout vertical>
+  <h3>{{session.title}}</h3>
+  <dl class="caption">
+    <dt>{{session.speakers.length > 1 ? 'Speakers' : 'Speaker' }}:</dt>
+    <dd *ngIf="session.speakers">
+      <span *ngFor="#speaker of session.speakers; #i = index, #l = last">{{speaker.name}}{{l ? '' : ', '}}</span>
+    </dd>
+  </dl>
+</div>

@@ -6,8 +6,11 @@ import {SessionService} from '../../providers/sessionService';
 import {Session} from '../../model/session';
 import {MarkdownPipe} from '../../pipes/markdown';
 
+import {SessionSpeakerComponent} from './session-speaker';
+
 @Component({
   selector: 'session-detail',
+  directives: [SessionSpeakerComponent],
   providers: [SessionService],
   pipes: [MarkdownPipe],
   host: {

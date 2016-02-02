@@ -7,9 +7,7 @@ export interface Session {
   lightning: string;
   start: string;
   end: string;
-  speaker1: User;
-  speaker2: User;
-  speaker3: User;
+  speakers: User[];
   room: string;
   highlight: boolean;
   links: {
