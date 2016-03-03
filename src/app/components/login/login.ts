@@ -2,6 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 import {TimerWrapper} from 'angular2/src/facade/async';
 import {UserService} from '../../providers/userService';
 import {User} from '../../model/user';
+import {ConfigService} from '../../providers/configService';
 
 @Component({
   selector: 'login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   user: User;
 
-  constructor(private _userService: UserService) {
+  constructor(private _userService: UserService, private config: ConfigService) {
   }
 
   ngOnInit(): any {
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    let popup = window.open('/cms/user/login/');
+    let popup = window.open(this.config.get('restPrefix') + 'user/login/');
     let interval = TimerWrapper.setInterval(() => {
       if (popup == null || popup.closed) {
         TimerWrapper.clearInterval(interval);

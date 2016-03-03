@@ -18,7 +18,7 @@ export class HttpCache {
   }
 
   get(url: string) {
-    url = this.prefix + url;
+    url = (this.prefix + url).replace('//', '/');
     if (!StringMapWrapper.contains(this.cache, url)) {
       let request = this.http.get(url, {headers: this.headers}).map(res => res.json()).share();
       StringMapWrapper.set(this.cache, url, request);
