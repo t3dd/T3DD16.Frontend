@@ -13,6 +13,7 @@ import {LoadingComponent} from './components/loading/loading';
 
 import {AppStates} from './providers/appStates';
 import {States} from './model/states';
+import {ConfigService} from './providers/configService';
 
 @Component({
   selector: 't3dd16-app',
@@ -48,11 +49,13 @@ export class App {
 
   states: States;
 
-  constructor(private appStates: AppStates, router: Router) {
+  constructor(private appStates: AppStates, router: Router, private config: ConfigService) {
     this.states = this.appStates.states;
-    //router.subscribe((url) => {
-    //  ga('send', 'pageview');
-    //});
+    router.subscribe((url) => {
+      if (config.get('production')) {
+        ga('send', 'pageview');
+      }
+    });
   }
 
   toggleOffcanvas() {

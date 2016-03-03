@@ -8,11 +8,11 @@ export class CmsService {
   }
 
   getContent(url: string) {
-    return this.http.get('/cms/' + url + '/');
+    return this.http.get(url + '/');
   }
 
   getNavigation() {
-    return this.http.get('/cms/?type=1450887489');
+    return this.http.get('?type=1450887489');
   }
 
 }

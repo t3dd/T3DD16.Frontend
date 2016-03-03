@@ -4,9 +4,11 @@ import {Router, OnActivate, ComponentInstruction} from 'angular2/router';
 import {SessionService} from '../../providers/sessionService';
 import {Session} from '../../model/session';
 import {MarkdownPipe} from '../../pipes/markdown';
+import {SessionSpeakersComponent} from './session-speakers';
 
 @Component({
   selector: 'session-detail',
+  directives: [SessionSpeakersComponent],
   providers: [SessionService],
   pipes: [MarkdownPipe],
   host: {

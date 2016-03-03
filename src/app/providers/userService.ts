@@ -8,15 +8,15 @@ export class UserService {
   }
 
   getUser() {
-    return this.http.get('/cms/user/me.json');
+    return this.http.get('user/me.json');
   }
 
   login() {
-    return this.http.get('/cms/user/login');
+    return this.http.get('user/login');
   }
 
   logout() {
-    return this.http.get('/cms/user/logout.json');
+    return this.http.get('user/logout.json');
   }
 
 }

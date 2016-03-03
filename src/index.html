@@ -95,8 +95,8 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-72197831-1', 'auto', {siteSpeedSampleRate: 100});
-    ga('globalRollup.set', 'forceSSL', true);
-    ga('globalRollup.set', 'anonymizeIp', true);
+    ga('set', 'forceSSL', true);
+    ga('set', 'anonymizeIp', true);
   </script>
 
 </head>
@@ -114,18 +114,26 @@
 </t3dd16-app>
 
 <!-- build:js bundle.js -->
-<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+<script src="node_modules/showdown/dist/showdown.js"></script>
+<script src="node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
 <script src="node_modules/systemjs/dist/system-csp-production.js"></script>
+<!-- endbuild -->
+
+<!-- build:remove -->
+<script src="node_modules/rxjs/bundles/Rx.js"></script>
+<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+<script src="node_modules/angular2/bundles/http.dev.js"></script>
+<script src="node_modules/angular2/bundles/router.dev.js"></script>
 <!-- endbuild -->
 
 <script>
   System.config({
-    defaultJSExtensions: true,
-    map: {
-      'typescript': 'node_modules/typescript/lib/typescript.js',
-      'angular2': 'node_modules/angular2',
-      'angular2-universal-preview': 'node_modules/angular2-universal-preview/dist/client/index',
-      'rxjs': 'node_modules/rxjs'
+    defaultExtension: 'js',
+    packages: {
+      app: {
+        format: 'register',
+        defaultExtension: 'js'
+      }
     }
   });
   System.import('client.js')
