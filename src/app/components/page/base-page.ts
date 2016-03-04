@@ -1,5 +1,6 @@
 import {Component, View, DynamicComponentLoader, ElementRef} from 'angular2/core';
 import {OnActivate, ComponentInstruction} from 'angular2/router';
+import {Title} from 'angular2/platform/browser';
 import {CmsService} from './../../providers/cmsService';
 import {ContentLink} from './content-link';
 import {SessionListComponent} from '../session/session-list';
@@ -15,6 +16,7 @@ export interface ContentPage {
 export class BasePageComponent implements OnActivate {
 
   protected _cms: CmsService;
+  protected _title: Title;
   protected _dcl: DynamicComponentLoader;
   protected _elementRef: ElementRef;
 
@@ -31,6 +33,7 @@ export class BasePageComponent implements OnActivate {
    * @param {ContentPage} page
    */
   renderPage(page: ContentPage) {
+    this._title.setTitle(page.title);
     this.renderTemplate(page.header, 'header');
     this.renderTemplate(page.content, 'content');
   }
