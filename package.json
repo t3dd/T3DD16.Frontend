@@ -43,6 +43,7 @@
     "tslint": "^3.2.1"
   },
   "scripts": {
+    "preinstall": "npm prune",
     "postinstall": "./node_modules/.bin/tsd install"
   }
 }
