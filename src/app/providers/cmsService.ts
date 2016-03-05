@@ -8,7 +8,7 @@ export class CmsService {
   }
 
   getContent(url: string) {
-    return this.http.get(url + '/');
+    return this.http.get(url + '/?v=1');
   }
 
   getNavigation() {
