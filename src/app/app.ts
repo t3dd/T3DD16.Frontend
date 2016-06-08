@@ -43,7 +43,7 @@ import {ConfigService} from './providers/configService';
 })
 @RouteConfig([
   {path: '/', name: 'Page', component: DefaultPageComponent, useAsDefault: true},
-  {path: '/session/...', name: 'SessionPage', component: SessionPageComponent},
+  {path: '/sessions/...', name: 'SessionPage', component: SessionPageComponent},
   {path: '/:path', name: 'Page', component: DefaultPageComponent},
 ])
 export class App {
