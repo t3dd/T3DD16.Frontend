@@ -9,7 +9,7 @@ export class SessionService {
   }
 
   get() {
-    return this.http.get('session.json');
+    return this.http.get('sessions.json');
   }
 
   getByPath(path) {
@@ -22,7 +22,7 @@ export class SessionService {
   }
 
   create(session: Session) {
-    return this.http.post('session.json', session);
+    return this.http.post('sessions.json', session);
   }
 
 }
