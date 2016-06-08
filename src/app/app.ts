@@ -33,6 +33,7 @@ import {ConfigService} from './providers/configService';
     'assets/styles/type.css',
     'assets/styles/buttons.css',
     'assets/styles/forms.css',
+    'assets/styles/table.css',
     'assets/styles/card.css',
     'assets/styles/modal.css',
     'assets/styles/sponsors.css'
