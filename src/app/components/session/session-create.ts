@@ -43,7 +43,7 @@ export class SessionCreateComponent {
 
   close() {
     this._title.setTitle(this._title.getTitle().substring(8));
-    this.router.navigateByUrl('/session');
+    this.router.navigateByUrl('/sessions');
   }
 
   onSubmit() {
