@@ -37,7 +37,7 @@ export class SessionDetailComponent implements OnActivate {
 
   close() {
     this.title.setTitle(this.title.getTitle().substring(this.session.title.length + 3));
-    this.router.navigateByUrl('/session');
+    this.router.navigateByUrl('/sessions');
   }
 
   documentKeypress(event: KeyboardEvent) {
