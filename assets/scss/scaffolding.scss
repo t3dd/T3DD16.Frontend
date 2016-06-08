@@ -59,10 +59,10 @@ body {
 
 #header {
   .container {
-    height: 150px;
+    min-height: 160px;
   }
   @include breakpoint(tablet) {
-    .container {
+    .bg-cover .container {
       min-height: 400px;
     }
   }
