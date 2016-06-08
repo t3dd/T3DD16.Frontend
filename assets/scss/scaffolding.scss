@@ -75,10 +75,9 @@ body {
   @include breakpoint(tablet) {
     min-height: calc(100vh - 65px - 400px - 66px);
 
-    .bg:first-child .container {
-      position: relative;
-      top: -92px;
-      margin-bottom: -102px;
+    .bg:first-child .card,
+    .bg-cover + .bg .card {
+      margin-top: -92px;
     }
   }
 }
