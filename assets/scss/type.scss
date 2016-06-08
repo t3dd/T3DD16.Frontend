@@ -24,6 +24,14 @@ h4 {
   font-size: 18px;
 }
 
+header {
+  > h1:first-child,
+  > h2:first-child,
+  > h3:first-child {
+    margin-bottom: 4px;
+  }
+}
+
 hr {
   min-height: 2px;
   background-color: #e7e7e7;
