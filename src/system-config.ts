@@ -36,6 +36,10 @@ const barrels: string[] = [
   'app/layout/loading',
   'app/layout/navigation',
   'app/layout/offcanvas',
+  'app/page',
+  'app/page/page',
+  'app/page/base-page',
+  'app/content-link',
   /** @cli-barrel */
 ];
 

@@ -5,13 +5,13 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { CmsServiceService } from './cms-service.service';
+import { CmsService } from './cms-service.service';
 
 describe('CmsService Service', () => {
-  beforeEachProviders(() => [CmsServiceService]);
+  beforeEachProviders(() => [CmsService]);
 
   it('should ...',
-      inject([CmsServiceService], (service: CmsServiceService) => {
+      inject([CmsService], (service: CmsService) => {
     expect(service).toBeTruthy();
   }));
 });

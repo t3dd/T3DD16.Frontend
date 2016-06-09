@@ -12,7 +12,6 @@ export class HttpService {
   }
 
   get(url: string) {
-    console.log(url);
     return this.http.get('http://web-t3dd16.nowak.nlx.wtf/' + url, {headers: this.headers}).map(res => res.json())
   }
 

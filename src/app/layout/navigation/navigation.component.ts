@@ -3,11 +3,12 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { Page } from '../../model';
 import { CmsService } from '../../shared';
+import { ContentLink } from '../../content-link.directive';
 
 @Component({
   moduleId: module.id,
   selector: 't3dd16-navigation',
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, ContentLink],
   templateUrl: 'navigation.component.html',
   styleUrls: ['navigation.component.css']
 })
