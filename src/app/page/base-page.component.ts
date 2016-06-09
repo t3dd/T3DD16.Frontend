@@ -2,6 +2,8 @@ import { Component, DynamicComponentLoader, ViewContainerRef, ViewChild } from '
 import { OnActivate, RouteSegment } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { CmsService } from '../shared/cms-service.service';
+import { ContentLink } from '../content-link.directive';
+import { SessionListComponent } from '../session';
 
 export interface ContentPage {
   title: string;
@@ -36,7 +38,7 @@ export class BasePageComponent implements OnActivate {
 
   renderTemplate(template: string, location: ViewContainerRef) {
     this.dcl.loadNextToLocation(
-      this.createContentComponent(template, []),
+      this.createContentComponent(template, [ContentLink, SessionListComponent]),
       location
     );
   }

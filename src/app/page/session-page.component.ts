@@ -3,6 +3,7 @@ import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { BasePageComponent } from './base-page.component';
 import { CmsService } from '../shared';
+import { SessionCreateComponent, SessionDetailComponent } from '../session';
 
 @Component({
   selector: 't3dd16-blank-page',
@@ -21,9 +22,9 @@ export class BlankPageComponent {
   styleUrls: [ 'page.component.css' ]
 })
 @Routes([
-  {path: '/', component: BlankPageComponent}
-  // {path: '/new', component: SessionCreateComponent},
-  // {path: '/:session', component: SessionDetailComponent}
+  {path: '/', component: BlankPageComponent},
+  {path: '/new', component: SessionCreateComponent},
+  {path: '/:session', component: SessionDetailComponent}
 ])
 export class SessionPageComponent extends BasePageComponent {
 
