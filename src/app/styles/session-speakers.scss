@@ -1,0 +1,19 @@
+dl {
+  margin: 0;
+}
+dt,dd {
+  display: inline;
+}
+dt {
+  margin-left: .5em;
+  font-weight: 700;
+}
+dt:first-child {
+  margin-left: 0;
+}
+dd {
+  margin-left: 0;
+}
+span:not(:last-child):after {
+  content: ', ';
+}
