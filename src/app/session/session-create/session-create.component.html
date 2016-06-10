@@ -1,3 +1,34 @@
-<p>
-  session-create works!
-</p>
+<div class="modal open fade in" fixed-fullbleed layout center-center horizontal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" horizontal layout center justified>
+        <h3 class="modal-title">Propose a session</h3>
+        <button type="button" class="button button__close" (click)="close()"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" [ngFormModel]="form">
+          <md-input-container [class.md-input-invalid]="title.dirty && !title.valid">
+            <label for="title">Session title</label>
+            <input id="title" required ngControl="title">
+            <p class="md-input-error" *ngIf="title.dirty && !title.valid">
+              Please add a session title
+            </p>
+          </md-input-container>
+          <md-input-container [class.md-input-invalid]="description.dirty && !description.valid">
+            <label for="description">Describe your session (supports markdown)</label>
+            <textarea rows="5" id="description" required ngControl="description"></textarea>
+            <p class="md-input-error" *ngIf="description.dirty && !description.valid">
+              Please add a session description
+            </p>
+          </md-input-container>
+        </form>
+        <h2>{{title.value}}</h2>
+        <div [innerHtml]="description.value | markdown"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button" (click)="onSubmit()">Propose session</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade in" fixed-fullbleed></div>
