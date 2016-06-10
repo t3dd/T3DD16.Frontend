@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, OnActivate, RouteSegment } from '@angular/router';
 
@@ -36,7 +36,7 @@ export class SessionDetailComponent implements OnActivate {
     this.router.navigateByUrl('/sessions');
   }
 
-  documentKeypress(event: KeyboardEvent) {
+  @HostListener('window:keydown', ['$event']) onKeydown(event: KeyboardEvent) {
     if (event.keyCode === 27) {
       this.close();
     }
