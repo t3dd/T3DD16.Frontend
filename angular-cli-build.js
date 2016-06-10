@@ -9,6 +9,7 @@ module.exports = function(defaults) {
       'systemjs/dist/system.js',
       'zone.js/dist/**/*.+(js|js.map)',
       'core-js/client/shim.min.js',
+      'showdown/dist/showdown.min.js',
       'reflect-metadata/**/*.+(js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)'
@@ -17,7 +18,8 @@ module.exports = function(defaults) {
       'vendor/core-js/client/shim.min.js',
       'vendor/reflect-metadata/Reflect.js',
       'vendor/systemjs/dist/system.js',
-      'vendor/zone.js/dist/zone.min.js'
+      'vendor/zone.js/dist/zone.min.js',
+      'vendor/showdown/dist/showdown.min.js'
     ]
   });
 };

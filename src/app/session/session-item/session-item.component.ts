@@ -1,11 +1,12 @@
 import { Component, Input, Output, HostListener, EventEmitter } from '@angular/core';
-import { SessionSpeakerComponent } from '../session-speaker';
 import { Session } from '../../model';
+import { SessionSpeakersComponent } from '../session-speakers';
+import { SpeakerImageComponent } from '../speaker-image';
 
 @Component({
   moduleId: module.id,
   selector: 't3dd16-session-item',
-  directives: [SessionSpeakerComponent],
+  directives: [SessionSpeakersComponent, SpeakerImageComponent],
   templateUrl: 'session-item.component.html',
   styleUrls: ['session-item.component.css']
 })

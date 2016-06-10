@@ -45,7 +45,9 @@ const barrels: string[] = [
   'app/session/session-list',
   'app/session/session-detail',
   'app/session/session-item',
-  'app/session/session-speaker',
+  'app/session/session-speakers',
+  'app/login',
+  'app/session/speaker-image',
   /** @cli-barrel */
 ];
 

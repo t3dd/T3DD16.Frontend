@@ -19,7 +19,7 @@ export class SessionListComponent implements OnInit {
 
   constructor(private sessionService: SessionService, private router: Router) {
     router.changes.subscribe(() => {
-      console.log('router change');
+      this.sessionService.get().subscribe(res => this.sessions = res);
     });
   }
 
