@@ -1,0 +1,147 @@
+@import "../base";
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-smoothing: antialiased;
+  font-family: sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: 'Share', cursive;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #000000;
+  background-color: #e7e7e7;
+}
+
+.app-navigation {
+  background-color: #ffffff;
+  padding: 0 30px;
+  height: 65px;
+}
+
+.offcanvas-toggle {
+  padding: 23px 20px;
+  display: inline-block;
+  border: 0 none;
+  margin-left: -30px;
+
+  @include breakpoint(tablet) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #FF8700;
+
+    & + span {
+      margin-top: 5px;
+    }
+  }
+
+}
+
+#header {
+  .container {
+    min-height: 160px;
+  }
+  @include breakpoint(tablet) {
+    .bg-cover .container {
+      min-height: 400px;
+    }
+  }
+}
+
+#content {
+  display: block;
+  min-height: calc(100vh - 65px - 150px - 66px);
+
+  @include breakpoint(tablet) {
+    min-height: calc(100vh - 65px - 400px - 66px);
+
+    > content-component:first-of-type > .bg:first-child > .container:first-child > .card:first-child,
+    .bg-cover + .bg > .container:first-child > .card:first-child {
+      margin-top: -64px;
+    }
+  }
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+.bg-cover {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-fullwidth {
+  height: 400px;
+}
+
+.bg-light-grey,
+.bg-white {
+  background-color: #fff;
+  color: #000;
+  fill: #000;
+}
+
+.bg-dark-grey,
+.bg-medium-grey,
+.bg-medium-blue,
+.bg-light-blue,
+.bg-brown,
+.bg-orange,
+.bg-mint {
+  color: #fff;
+  fill: #fff;
+}
+
+.bg-dark-grey {
+  background-color: #515151;
+}
+
+.bg-medium-grey {
+  background-color: #8C8C8C;
+}
+
+.bg-light-grey {
+  background-color: #e7e7e7;
+}
+
+.bg-medium-blue {
+  background-color: #007FB2;
+}
+
+.bg-light-blue {
+  background-color: #00B5FF;
+}
+
+.bg-brown {
+  background-color: #B25E00;
+}
+
+.bg-orange {
+  background-color: #FF8700;
+}
+
+.bg-mint {
+  background-color: #14CC9D;
+}

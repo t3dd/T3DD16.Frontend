@@ -1,0 +1,69 @@
+@import "../base";
+
+.button {
+  display: inline-block;
+  position: relative;
+  min-width: 45px;
+  margin: 0 5px;
+  padding: 12px;
+  background: 0 0;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: 0;
+  border-radius: 3px;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  z-index: 0;
+  color: #FF8700;
+  text-decoration: none;
+  border: 0 none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.button__white {
+  background-color: #ffffff;
+}
+
+.button__close {
+  margin: 0;
+  min-width: 20px;
+  padding: 10px;
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    width: 24px;
+    border: 2px solid #FF8700;
+    border-radius: 1px;
+    transition: border .2s,transform .3s;
+    transform: translateZ(0);
+  }
+
+  &:before {
+    transform: rotate(45deg);
+    right: -2px;
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+    left: -2px;
+  }
+
+  &:hover {
+    &:before {
+      transform: rotate(135deg);
+    }
+    &:after {
+      transform: rotate(45deg);
+    }
+  }
+
+}
