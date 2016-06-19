@@ -5,6 +5,7 @@ import { ROUTER_PROVIDERS } from '@angular/router';
 import { AppComponent, environment } from './app/';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 
 if (environment.production) {
   enableProdMode();

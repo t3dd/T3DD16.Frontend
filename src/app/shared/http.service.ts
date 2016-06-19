@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { environment } from '../index';
 
 @Injectable()
 export class HttpService {
@@ -12,11 +13,11 @@ export class HttpService {
   }
 
   get(url: string) {
-    return this.http.get('http://t3dd16.nowak.nlx.wtf/' + url, {headers: this.headers}).map(res => res.json())
+    return this.http.get(environment.endpoint + url, {headers: this.headers, withCredentials: true}).map(res => res.json())
   }
 
   post(url: string, object: any) {
-    return this.http.post('http://t3dd16.nowak.nlx.wtf/' + url, JSON.stringify(object), {headers: this.headers}).map(res => res.json());
+    return this.http.post(environment.endpoint + url, JSON.stringify(object), {headers: this.headers, withCredentials: true}).map(res => res.json());
   }
 
 }
