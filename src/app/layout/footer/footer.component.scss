@@ -4,6 +4,11 @@ footer {
   padding: 20px;
   border-top: 2px solid #e7e7e7;
   background-color: #FFF;
+
+  @include breakpoint(phone-only) {
+    -webkit-flex-direction: column !important;
+    flex-direction: column !important;
+  }
 }
 
 .navigation {
