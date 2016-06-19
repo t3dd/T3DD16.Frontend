@@ -1,0 +1,13 @@
+<div class="header bg-orange">
+  <a href="/" class="logo">
+    <svg viewBox="0 0 387.187 172.5" fill="#ffffff">
+      <use xlink:href="#logo__figure"></use>
+      <use xlink:href="#logo__name"></use>
+      <use xlink:href="#logo__location"></use>
+    </svg>
+  </a>
+</div>
+<div class="navigation">
+  <a href="/">Home</a>
+  <a *ngFor="let page of (pages$ | async)?.children" [href]="page.link" inline center-center horizontal layout>{{page.title}}</a>
+</div>

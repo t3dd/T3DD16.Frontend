@@ -46,7 +46,7 @@ const barrels: string[] = [
   'app/layout/footer',
   'app/layout/loading',
   'app/layout/navigation',
-  'app/layout/offcanvas',
+  'app/layout/sidenav-content',
   'app/page',
   'app/page/page',
   'app/page/base-page',

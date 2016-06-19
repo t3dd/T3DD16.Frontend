@@ -1,10 +1,11 @@
 declare function ga(command: string, type: string);
 
-import {Component, ViewEncapsulation} from '@angular/core';
-import {FORM_PROVIDERS, COMMON_DIRECTIVES} from '@angular/common';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { FORM_PROVIDERS, COMMON_DIRECTIVES } from '@angular/common';
 import { Router, Routes, ROUTER_DIRECTIVES } from '@angular/router';
+import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
 
-import { HeaderComponent, FooterComponent } from './layout';
+import { HeaderComponent, FooterComponent, SidenavContentComponent } from './layout';
 import { CmsService, HttpService } from './shared';
 import { PageComponent, SessionPageComponent } from './page';
 import { environment } from './environment';
@@ -12,10 +13,10 @@ import { environment } from './environment';
 @Component({
   moduleId: module.id,
   selector: 't3dd16-root',
-  providers: [FORM_PROVIDERS, CmsService, HttpService],
+  providers: [ FORM_PROVIDERS, CmsService, HttpService ],
   directives: [
-    ROUTER_DIRECTIVES, COMMON_DIRECTIVES,
-    HeaderComponent, FooterComponent
+    ROUTER_DIRECTIVES, COMMON_DIRECTIVES, MD_SIDENAV_DIRECTIVES,
+    HeaderComponent, FooterComponent, SidenavContentComponent
   ],
   templateUrl: 'app.component.html',
   styleUrls: [

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NavigationComponent } from '../navigation';
 import { LoginComponent } from '../../login';
+import { MdSidenav } from '@angular2-material/sidenav';
 
 @Component({
   moduleId: module.id,
@@ -14,9 +15,15 @@ import { LoginComponent } from '../../login';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() sidenav: MdSidenav;
+
   constructor() {}
 
   ngOnInit() {
+  }
+
+  toggleSidenav() {
+    this.sidenav.toggle();
   }
 
 }

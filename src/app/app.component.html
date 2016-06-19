@@ -1,5 +1,9 @@
-<t3dd16-header></t3dd16-header>
-<router-outlet></router-outlet>
-<t3dd16-footer></t3dd16-footer>
-<t3dd16-offcanvas></t3dd16-offcanvas>
+<md-sidenav-layout>
+  <md-sidenav #sidenav mode="'toggle">
+    <t3dd16-sidenav-content></t3dd16-sidenav-content>
+  </md-sidenav>
+  <t3dd16-header [sidenav]="sidenav"></t3dd16-header>
+  <router-outlet></router-outlet>
+  <t3dd16-footer></t3dd16-footer>
+</md-sidenav-layout>
 <!--<t3dd16-loading center-center horizontal layout class="active"></t3dd16-loading>-->

@@ -12,7 +12,7 @@ export class CmsService {
   }
 
   getNavigation() {
-    return this.http.get('?type=1450887489');
+    return this.http.get('?type=1450887489').share();
   }
 
 }
