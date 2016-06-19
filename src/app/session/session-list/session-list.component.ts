@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Session } from '../../model';
 import { SessionService } from '../../shared';
 import { SessionItemComponent } from '../session-item';
+import { environment } from '../../environment';
 
 @Component({
   moduleId: module.id,
@@ -28,10 +29,7 @@ export class SessionListComponent implements OnInit {
   }
 
   onSelect(session: Session) {
-    let loc = session.links.route;
-    loc = loc.lastIndexOf('/') === (loc.length - 1) ? loc.substr(0, loc.length - 1) : loc.substr(0, loc.lastIndexOf('/'));
-    let urlPath = loc.substr(loc.lastIndexOf('/') + 1);
-    this.router.navigate(['sessions', urlPath]);
+    this.router.navigateByUrl(session.links.route.replace(environment.endpoint, ''));
   }
 
 }
