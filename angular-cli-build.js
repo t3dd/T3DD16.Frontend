@@ -12,7 +12,8 @@ module.exports = function(defaults) {
       'showdown/dist/showdown.min.js',
       'reflect-metadata/**/*.+(ts|js|js.map)',
       'rxjs/**/*.+(js|js.map)',
-      '@angular/**/*.+(js|js.map)'
+      '@angular/**/*.+(js|js.map)',
+      '@angular2-material/**/*'
     ],
     polyfills: [
       'vendor/core-js/client/shim.min.js',
