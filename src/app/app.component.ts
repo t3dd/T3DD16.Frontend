@@ -11,13 +11,13 @@ import { environment } from './environment';
 
 @Component({
   moduleId: module.id,
-  selector: 't3dd16-app',
+  selector: 't3dd16-root',
   providers: [FORM_PROVIDERS, CmsService, HttpService],
   directives: [
     ROUTER_DIRECTIVES, COMMON_DIRECTIVES,
     HeaderComponent, FooterComponent
   ],
-  templateUrl: 't3dd16.component.html',
+  templateUrl: 'app.component.html',
   styleUrls: [
     'styles/scaffolding.css',
     'styles/animation.css',
@@ -37,7 +37,7 @@ import { environment } from './environment';
   {path: '/sessions', component: SessionPageComponent},
   {path: '/:path', component: PageComponent}
 ])
-export class T3DD16AppComponent {
+export class AppComponent {
 
   title: string;
 

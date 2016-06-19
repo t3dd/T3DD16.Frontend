@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.5",
+    "version": "1.0.0-beta.6",
     "name": "t3dd16"
   },
   "apps": [
@@ -26,6 +26,7 @@
     "prefix": "t3dd16",
     "sourceDir": "src",
     "styleExt": "scss",
-    "prefixInterfaces": false
+    "prefixInterfaces": false,
+    "lazyRoutePrefix": "+"
   }
 }

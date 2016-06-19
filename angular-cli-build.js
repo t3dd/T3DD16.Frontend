@@ -10,7 +10,7 @@ module.exports = function(defaults) {
       'zone.js/dist/**/*.+(js|js.map)',
       'core-js/client/shim.min.js',
       'showdown/dist/showdown.min.js',
-      'reflect-metadata/**/*.+(js|js.map)',
+      'reflect-metadata/**/*.+(ts|js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)'
     ],

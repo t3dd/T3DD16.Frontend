@@ -1,9 +1,9 @@
-export class T3DD16Page {
+export class AppPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('t3-dd16-app h1')).getText();
+    return element(by.css('app-root h1')).getText();
   }
 }
