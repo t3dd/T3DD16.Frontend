@@ -120,6 +120,17 @@
 <script src="{{.}}"></script>
 {{/each}}
 <script>
+  // https://github.com/systemjs/systemjs/issues/172#issuecomment-206100414
+  var systemLocate = System.locate;
+  System.locate = function(load) {
+    var System = this;
+    return Promise.resolve(systemLocate.call(this, load)).then(function(address) {
+      return address + System.cacheBust;
+    });
+  };
+  System.cacheBust = '?v=' + new Date().getTime();
+</script>
+<script>
   System.import('system-config.js').then(function () {
     System.import('main');
   }).catch(console.error.bind(console));
