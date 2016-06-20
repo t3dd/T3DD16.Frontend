@@ -1,0 +1,23 @@
+@import "../../base";
+
+footer {
+  padding: 20px;
+  border-top: 2px solid #e7e7e7;
+  background-color: #FFF;
+
+  @include breakpoint(phone-only) {
+    -webkit-flex-direction: column !important;
+    flex-direction: column !important;
+  }
+}
+
+.navigation {
+  a {
+    border-bottom: 0 none;
+    padding: 0 10px;
+
+    &:not(:last-child) {
+      border-right: 1px solid #000;
+    }
+  }
+}

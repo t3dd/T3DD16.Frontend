@@ -1,0 +1,64 @@
+@import "../base";
+
+.modal-backdrop {
+  z-index: 1040;
+  background-color: #000;
+
+  &.in {
+    opacity: 0.5;
+  }
+}
+
+.modal {
+  z-index: 1050;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+
+  &.open {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.modal-dialog {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  @include breakpoint(tablet) {
+    height: auto;
+    max-width: 1170px;
+    padding: 24px 32px;
+  }
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.23);
+}
+
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  position: relative;
+  padding: 15px;
+  max-height: calc(100vh - 60px - 80px - 50px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #eee;
+}

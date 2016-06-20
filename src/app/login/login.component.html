@@ -1,0 +1,10 @@
+<div class="user">
+  <a (click)="login()" layout horizontal center *ngIf="!(user$ | async)?.username">
+    <t3dd16-speaker-image [image]="'images/account.svg'"></t3dd16-speaker-image>
+    <span>TYPO3 Login</span>
+  </a>
+  <span layout horizontal center [hidden]="!(user$ | async)?.username">
+    <t3dd16-speaker-image [image]="(user$ | async)?.image"></t3dd16-speaker-image>
+    <span>{{(user$ | async)?.name}}</span>
+  </span>
+</div>

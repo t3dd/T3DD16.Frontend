@@ -1,0 +1,21 @@
+@import "../base";
+
+.sponsors {
+  text-align: center;
+
+  img {
+    max-height: 100px;
+
+    @include breakpoint(tablet) {
+      max-height: 90px;
+    }
+    @include breakpoint(desktop) {
+      max-height: 120px;
+    }
+  }
+
+  a {
+    display: block;
+    border-bottom: 0 none;
+  }
+}

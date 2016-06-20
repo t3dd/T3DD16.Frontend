@@ -1,0 +1,6 @@
+<footer flex horizontal layout center justified>
+  <span>All shown prices are exclusive of VAT.</span>
+  <div class="navigation" layout horizontal center>
+    <a *ngFor="let page of pages" [href]="page.link" inline center-center horizontal layout>{{page.title}}</a>
+  </div>
+</footer>
