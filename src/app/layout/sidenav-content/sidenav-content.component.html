@@ -8,6 +8,6 @@
   </a>
 </div>
 <div class="navigation">
-  <a href="/">Home</a>
-  <a *ngFor="let page of (pages$ | async)?.children" [href]="page.link" inline center-center horizontal layout>{{page.title}}</a>
+  <a href="/" (click)="sidenav.close()">Home</a>
+  <a *ngFor="let page of (pages$ | async)?.children" [href]="page.link" (click)="sidenav.close()" inline center-center horizontal layout>{{page.title}}</a>
 </div>

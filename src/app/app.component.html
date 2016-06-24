@@ -1,6 +1,6 @@
 <md-sidenav-layout>
   <md-sidenav #sidenav mode="'toggle">
-    <t3dd16-sidenav-content></t3dd16-sidenav-content>
+    <t3dd16-sidenav-content [sidenav]="sidenav"></t3dd16-sidenav-content>
   </md-sidenav>
   <t3dd16-header [sidenav]="sidenav"></t3dd16-header>
   <router-outlet></router-outlet>
