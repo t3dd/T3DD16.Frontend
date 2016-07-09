@@ -2,12 +2,11 @@ declare function ga(command: string, type: string);
 
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FORM_PROVIDERS, COMMON_DIRECTIVES } from '@angular/common';
-import { Router, Routes, ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
 
 import { HeaderComponent, FooterComponent, SidenavContentComponent } from './layout';
 import { CmsService, HttpService } from './shared';
-import { PageComponent, SessionPageComponent } from './page';
 import { environment } from './environment';
 
 @Component({
@@ -33,17 +32,12 @@ import { environment } from './environment';
   ],
   encapsulation: ViewEncapsulation.None
 })
-@Routes([
-  {path: '/', component: PageComponent},
-  {path: '/sessions', component: SessionPageComponent},
-  {path: '/:path', component: PageComponent}
-])
 export class AppComponent {
 
   title: string;
 
-  constructor(router: Router) {
-    router.changes.subscribe(() => {
+  constructor(route: ActivatedRoute) {
+    route.url.subscribe((foo) => {
       if (environment.production) {
         ga('send', 'pageview');
       }

@@ -29,7 +29,7 @@ export class ContentLink {
 
   onClick(): boolean {
     if (this.target !== '_blank' && isString(this.href) && isInternalLink(this.href)) {
-      this.router.navigateByUrl(this.href.replace (/^[a-z]{4,5}\:\/{2}[a-z]{1,}\:[0-9]{1,4}.(.*)/, '$1'));
+      this.router.navigateByUrl(this.href.replace (/^[a-z]{4,5}\:\/{2}[a-z]{1,}\:[0-9]{1,4}.(.*)/, '$1').replace(/^\/|\/$/g, ''));
       return false;
     }
     return true;

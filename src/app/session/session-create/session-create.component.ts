@@ -12,7 +12,7 @@ import { MdTextarea } from '../../material/textarea';
   moduleId: module.id,
   selector: 't3dd16-session-create',
   directives: [ FORM_DIRECTIVES, MD_INPUT_DIRECTIVES, MdTextarea ],
-  providers: [ SessionService ],
+  providers: [ SessionService, Title ],
   pipes: [ Markdown ],
   templateUrl: 'session-create.component.html',
   styleUrls: [ 'session-create.component.css' ]

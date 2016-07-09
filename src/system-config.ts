@@ -48,8 +48,6 @@ const barrels: string[] = [
   'app/layout/navigation',
   'app/layout/sidenav-content',
   'app/page',
-  'app/page/page',
-  'app/page/base-page',
   'app/content-link',
   'app/session',
   'app/session/session-create',

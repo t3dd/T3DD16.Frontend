@@ -19,9 +19,6 @@ export class SessionListComponent implements OnInit {
   sessions: Session[];
 
   constructor(private sessionService: SessionService, private router: Router) {
-    router.changes.subscribe(() => {
-      this.sessionService.get().subscribe(res => this.sessions = res);
-    });
   }
 
   ngOnInit(): any {
@@ -29,7 +26,7 @@ export class SessionListComponent implements OnInit {
   }
 
   onSelect(session: Session) {
-    this.router.navigateByUrl(session.links.route.replace(environment.endpoint, ''));
+    this.router.navigateByUrl(session.links.route.replace(environment.endpoint, '').replace(/^\/|\/$/g, ''));
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="card card__session">
   <div class="card__content" layout horizontal center>
     <t3dd16-speaker-image [image]="session.speakers[0].image"></t3dd16-speaker-image>
-    <div class="session-info" layout vertical>
+    <div layout vertical flex>
       <h3>{{session.title}}</h3>
       <t3dd16-session-speakers layout horizontal [speakers]="session.speakers"></t3dd16-session-speakers>
     </div>

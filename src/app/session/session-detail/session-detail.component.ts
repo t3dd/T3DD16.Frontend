@@ -1,6 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router, OnActivate, RouteSegment } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Session } from '../../model';
 import { SessionService } from '../../shared';
@@ -12,20 +12,20 @@ import { Markdown } from '../../markdown.pipe';
   moduleId: module.id,
   selector: 't3dd16-session-detail',
   directives: [SessionSpeakersComponent, SpeakerImageComponent],
-  providers: [SessionService],
+  providers: [SessionService, Title],
   pipes: [Markdown],
   templateUrl: 'session-detail.component.html',
-  styleUrls: [ 'session-detail.component.css' ]
+  styleUrls: ['session-detail.component.css']
 })
-export class SessionDetailComponent implements OnActivate {
+export class SessionDetailComponent implements OnInit {
 
   session: Session;
 
-  constructor(private sessionService: SessionService, private router: Router, protected title: Title) {
+  constructor(private sessionService: SessionService, private router: Router, protected title: Title, private route: ActivatedRoute) {
   }
 
-  routerOnActivate(curr: RouteSegment): void {
-    this.sessionService.getByPath(curr.parameters['session']).subscribe((session) => {
+  ngOnInit(): void {
+    this.sessionService.getByPath(this.route.snapshot.params['session']).subscribe((session) => {
       this.title.setTitle(session.title + ' - ' + this.title.getTitle());
       this.session = session;
     });
