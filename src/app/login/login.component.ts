@@ -9,7 +9,6 @@ import { User } from '../model';
   moduleId: module.id,
   selector: 't3dd16-login',
   directives: [SpeakerImageComponent],
-  providers: [UserService],
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css']
 })

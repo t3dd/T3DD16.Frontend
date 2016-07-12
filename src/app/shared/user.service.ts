@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TimerWrapper } from '@angular/compiler/src/facade/async';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Rx';
 
 import { HttpService } from './http.service';
 import { User } from '../model';
@@ -14,10 +14,10 @@ export class UserService {
 
   constructor(private http: HttpService) {
     this.user$ = new Subject<User>();
-    this.fetchUser();
   }
 
   getUser() {
+    this.fetchUser();
     return this.user$.asObservable();
   }
 
