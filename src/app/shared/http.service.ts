@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { environment } from '../index';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class HttpService {
 
   protected headers: Headers = new Headers();
+  protected $observables: {[id: string]: Observable<any>} = {};
+  protected data: {[id: string]: Observable<any>} = {};
 
   constructor(private http: Http) {
     this.headers.append('Content-Type', 'application/json');
@@ -13,11 +16,34 @@ export class HttpService {
   }
 
   get(url: string) {
-    return this.http.get(environment.endpoint + url, {headers: this.headers, withCredentials: true}).map(res => res.json())
+    if (this.data.hasOwnProperty(url)) {
+      return Observable.of(this.data[url]);
+    } else if (this.$observables.hasOwnProperty(url)) {
+      return this.$observables[url];
+    } else {
+      this.$observables[url] = this.http.get(environment.endpoint + url, {
+        headers: this.headers,
+        withCredentials: true
+      })
+        .map(res => res.json())
+        .do(val => {
+          this.data[url] = val;
+          delete this.$observables[url];
+        })
+        // .catch(() => {
+        //   delete this.data[url];
+        //   delete this.$observables[url];
+        // })
+        .share();
+      return this.$observables[url];
+    }
   }
 
   post(url: string, object: any) {
-    return this.http.post(environment.endpoint + url, JSON.stringify(object), {headers: this.headers, withCredentials: true}).map(res => res.json());
+    return this.http.post(environment.endpoint + url, JSON.stringify(object), {
+      headers: this.headers,
+      withCredentials: true
+    }).map(res => res.json());
   }
 
 }
