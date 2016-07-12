@@ -9,6 +9,7 @@ import { environment } from '../index';
 @Injectable()
 export class UserService {
 
+  loggedIn: boolean = false;
   user$: Subject<User>;
 
   constructor(private http: HttpService) {
@@ -20,7 +21,8 @@ export class UserService {
     return this.user$.asObservable();
   }
 
-  hasUser() {
+  isLoggedIn() {
+    return this.loggedIn;
   }
 
   login() {
@@ -38,8 +40,11 @@ export class UserService {
 
   protected fetchUser() {
     this.http.get('user/me.json').subscribe((user: User) => {
+      this.loggedIn = true;
       this.user$.next(user);
-    }, () => {})
+    }, () => {
+      this.loggedIn = false;
+    })
   }
 
 }

@@ -1,6 +1,7 @@
-import { provideRouter, RouterConfig }  from '@angular/router';
+import { provideRouter, RouterConfig, CanActivate }  from '@angular/router';
 import { PageComponent } from './page';
 import { SessionCreateComponent, SessionDetailComponent } from './session';
+import { AuthGuard } from './auth.guard';
 
 const routes: RouterConfig = [
   {
@@ -20,6 +21,7 @@ const routes: RouterConfig = [
         data: {
           path: 'sessions'
         },
+        canActivate: [AuthGuard],
         children: [
           {path: '', component: PageComponent},
           {path: '', component: SessionCreateComponent, outlet: 'modal'}

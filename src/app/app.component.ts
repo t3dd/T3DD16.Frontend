@@ -12,7 +12,7 @@ import { environment } from './environment';
 @Component({
   moduleId: module.id,
   selector: 't3dd16-root',
-  providers: [ FORM_PROVIDERS, CmsService, HttpService ],
+  providers: [ FORM_PROVIDERS, CmsService ],
   directives: [
     ROUTER_DIRECTIVES, COMMON_DIRECTIVES, MD_SIDENAV_DIRECTIVES,
     HeaderComponent, FooterComponent, SidenavContentComponent

@@ -26,14 +26,16 @@ export class HttpService {
         withCredentials: true
       })
         .map(res => res.json())
+        .catch((error: any) => {
+          let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+          delete this.data[url];
+          delete this.$observables[url];
+          return Observable.throw(errMsg);
+        })
         .do(val => {
           this.data[url] = val;
           delete this.$observables[url];
         })
-        // .catch(() => {
-        //   delete this.data[url];
-        //   delete this.$observables[url];
-        // })
         .share();
       return this.$observables[url];
     }
