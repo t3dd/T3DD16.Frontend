@@ -59,6 +59,7 @@ const barrels: string[] = [
   'app/session/speaker-image',
   'app/material',
   'app/material/textarea',
+  'app/session/session-vote',
   /** @cli-barrel */
 ];
 

@@ -19,3 +19,19 @@ h3 {
     background: #e6e6e6;
   }
 }
+
+.card__highlighted {
+  border: 1px solid $md-accent;
+}
+
+.highlight {
+  background: $md-accent;
+  color: #ffffff;
+  padding: 0 8px;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+.votes {
+  text-align: center;
+}

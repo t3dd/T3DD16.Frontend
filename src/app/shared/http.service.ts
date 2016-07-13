@@ -48,4 +48,11 @@ export class HttpService {
     }).map(res => res.json());
   }
 
+  delete(url: string) {
+    return this.http.delete(environment.endpoint + url, {
+      headers: this.headers,
+      withCredentials: true
+    }).map(res => res.json());
+  }
+
 }

@@ -1,9 +1,16 @@
-<div class="card card__session">
+<div class="card card__session" [class.card__highlighted]="session.highlight">
   <div class="card__content" layout horizontal center>
     <t3dd16-speaker-image [image]="session.speakers[0].image"></t3dd16-speaker-image>
     <div layout vertical flex>
       <h3>{{session.title}}</h3>
-      <t3dd16-session-speakers layout horizontal [speakers]="session.speakers"></t3dd16-session-speakers>
+      <div layout horizontal>
+        <span class="highlight" *ngIf="session.highlight">Exclusive highlight session</span>
+        <t3dd16-session-speakers layout horizontal [speakers]="session.speakers"></t3dd16-session-speakers>
+      </div>
+    </div>
+    <div layout vertical>
+      <t3dd16-session-vote [session]="session"></t3dd16-session-vote>
+      <span class="votes">{{session.votes}}</span>
     </div>
   </div>
 </div>
