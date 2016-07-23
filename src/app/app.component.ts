@@ -1,4 +1,4 @@
-declare function ga(command: string, type: string);
+declare function ga(command: string, type: string, url?: string);
 
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FORM_PROVIDERS, COMMON_DIRECTIVES } from '@angular/common';
@@ -37,11 +37,15 @@ export class AppComponent {
   title: string;
 
   constructor(router: Router) {
+    let currentPage = '', lastPage = '';
     router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
-        if (environment.production) {
+        currentPage = s.url;
+        if (environment.production && !!lastPage.indexOf('/sessions/')) {
+          ga('set', 'page', currentPage);
           ga('send', 'pageview');
         }
+        lastPage = currentPage;
       }
     });
   }
