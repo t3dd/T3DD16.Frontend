@@ -5,12 +5,11 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
-    "postinstall": "cp patches/angular-cli/webpack-build-production.ts node_modules/angular-cli/addon/ng2/models/webpack-build-production.ts",
+    "apply:patches": "cp patches/angular-cli/webpack-build-production.ts node_modules/angular-cli/addon/ng2/models/webpack-build-production.ts",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "prebuild:prod": "cp patches/angular-cli/webpack-build-production.ts node_modules/angular-cli/addon/ng2/models/webpack-build-production.ts",
-    "build:prod": "ng build --prod && cp -r src/images dist/images && cp src/favicon.ico dist/favicon.ico",
+    "build:prod": "npm run apply:patches && ng build --prod && cp -r src/images dist/images && cp src/favicon.ico dist/favicon.ico",
     "e2e": "protractor"
   },
   "private": true,
