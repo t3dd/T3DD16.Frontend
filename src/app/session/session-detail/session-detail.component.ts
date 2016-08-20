@@ -4,18 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Session } from '../../model';
 import { SessionService } from '../../shared';
-import { SessionSpeakersComponent } from '../session-speakers';
-import { SpeakerImageComponent } from '../speaker-image';
-import { Markdown } from '../../markdown.pipe';
 
 @Component({
-  moduleId: module.id,
   selector: 't3dd16-session-detail',
-  directives: [SessionSpeakersComponent, SpeakerImageComponent],
-  providers: [SessionService, Title],
-  pipes: [Markdown],
   templateUrl: 'session-detail.component.html',
-  styleUrls: ['session-detail.component.css']
+  styleUrls: ['session-detail.component.scss']
 })
 export class SessionDetailComponent implements OnInit {
 

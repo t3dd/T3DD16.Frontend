@@ -1,1 +1,1 @@
-<t3dd16-session-item (select)="onSelect(session)" [session]="session" *ngFor="let session of sessions"></t3dd16-session-item>
+<t3dd16-session-item (select)="onSelect(session)" [session]="session" *ngFor="let session of sessions | async"></t3dd16-session-item>

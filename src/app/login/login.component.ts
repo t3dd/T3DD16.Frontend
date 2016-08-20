@@ -2,15 +2,12 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 import { UserService } from '../shared';
-import { SpeakerImageComponent } from '../session/speaker-image';
 import { User } from '../model';
 
 @Component({
-  moduleId: module.id,
   selector: 't3dd16-login',
-  directives: [SpeakerImageComponent],
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css']
+  styleUrls: ['login.component.scss']
 })
 export class LoginComponent {
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { TimerWrapper } from '@angular/compiler/src/facade/async';
 import { Subject } from 'rxjs/Rx';
 
 import { HttpService } from './http.service';
@@ -27,15 +26,12 @@ export class UserService {
 
   login() {
     let popup = window.open(environment.endpoint + 'user/login/');
-    let interval = TimerWrapper.setInterval(() => {
+    let interval = setInterval(() => {
       if (popup == null || popup.closed) {
-        TimerWrapper.clearInterval(interval);
+        clearInterval(interval);
         this.fetchUser();
       }
     }, 200);
-  }
-
-  logout() {
   }
 
   protected fetchUser() {
@@ -44,7 +40,7 @@ export class UserService {
       this.user$.next(user);
     }, () => {
       this.loggedIn = false;
-    })
+    });
   }
 
 }

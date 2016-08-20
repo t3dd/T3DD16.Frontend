@@ -1,12 +1,15 @@
 import {
-  Component, OnInit, OnDestroy, DynamicComponentLoader, ViewContainerRef, ViewChild,
+  Component,
+  OnInit,
+  OnDestroy,
+  DynamicComponentLoader,
+  ViewContainerRef,
+  ViewChild,
   ComponentRef
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { CmsService } from '../shared/cms-service.service';
-import { ContentLink } from '../content-link.directive';
-import { SessionListComponent } from '../session';
 
 export interface ContentPage {
   title: string;
@@ -17,11 +20,9 @@ export interface ContentPage {
 }
 
 @Component({
-  moduleId: module.id,
   selector: 't3dd16-page',
-  providers: [Title],
   templateUrl: 'page.component.html',
-  styleUrls: ['page.component.css']
+  styleUrls: ['page.component.scss']
 })
 export class PageComponent implements OnInit, OnDestroy {
 
@@ -48,7 +49,7 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   renderPage(page: ContentPage) {
-    this._children.forEach(cmp=>cmp.destroy());
+    this._children.forEach(cmp => cmp.destroy());
     this.title.setTitle(page.title);
     this.renderTemplate(page.header, this.header);
     this.renderTemplate(page.content, this.content);
@@ -56,18 +57,17 @@ export class PageComponent implements OnInit, OnDestroy {
 
   renderTemplate(template: string, location: ViewContainerRef) {
     this.dcl.loadNextToLocation(
-      this.createContentComponent(template, [ContentLink, SessionListComponent]),
+      this.createContentComponent(template),
       location
     ).then((ref) => {
       this._children.push(ref);
     });
   }
 
-  createContentComponent(template: string, directives = []) {
+  createContentComponent(template: string) {
     @Component({
-      selector: 'content-component',
-      template: template,
-      directives: directives
+      selector: 't3dd16-content-component',
+      template: template
     })
     class ContentComponent {
     }
