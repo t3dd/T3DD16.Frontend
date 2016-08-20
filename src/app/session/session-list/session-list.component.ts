@@ -1,28 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { Session } from '../../model';
 import { SessionService } from '../../shared';
-import { SessionItemComponent } from '../session-item';
-import { environment } from '../../environment';
+import { environment } from '../../environments/environment';
 
 @Component({
-  moduleId: module.id,
   selector: 't3dd16-session-list',
-  directives: [SessionItemComponent],
-  providers: [SessionService],
   templateUrl: 'session-list.component.html',
-  styleUrls: ['session-list.component.css']
+  styleUrls: ['session-list.component.scss']
 })
 export class SessionListComponent implements OnInit {
 
-  sessions: Session[];
+  sessions: Observable<Session[]>;
 
   constructor(private sessionService: SessionService, private router: Router) {
   }
 
   ngOnInit(): any {
-    this.sessionService.get().subscribe(res => this.sessions = res);
+    this.sessions = this.sessionService.get();
   }
 
   onSelect(session: Session) {

@@ -22,6 +22,7 @@ export class HttpService {
       return this.$observables[url];
     } else {
       this.$observables[url] = this.http.get(environment.endpoint + url, {
+        body: '',
         headers: this.headers,
         withCredentials: true
       })

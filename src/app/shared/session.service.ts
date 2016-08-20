@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Session} from '../model/session';
-import {HttpService} from './http.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Session } from '../model/session';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class SessionService {
@@ -8,7 +9,7 @@ export class SessionService {
   constructor(private http: HttpService) {
   }
 
-  get() {
+  get(): Observable<Session[]> {
     return this.http.get('sessions.json');
   }
 

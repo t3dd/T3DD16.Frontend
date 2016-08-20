@@ -1,17 +1,16 @@
 declare function ga(command: string, type: string, config?: any);
 
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Session, User } from '../../model';
 import { UserService, VoteService } from '../../shared';
 
 @Component({
-  moduleId: module.id,
   selector: 't3dd16-session-vote',
   templateUrl: 'session-vote.component.html',
-  styleUrls: ['session-vote.component.css']
+  styleUrls: ['session-vote.component.scss']
 })
-export class SessionVoteComponent {
+export class SessionVoteComponent implements AfterViewInit {
 
   @Input() session: Session;
   voted: boolean = false;
@@ -93,7 +92,7 @@ export class SessionVoteComponent {
           return vote.session === this.session.__identity;
         });
       }
-    })
+    });
   }
 
 }

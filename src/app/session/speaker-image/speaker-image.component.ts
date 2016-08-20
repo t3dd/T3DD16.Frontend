@@ -1,12 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { SafePipe } from '../../safe.pipe';
 
 @Component({
-  moduleId: module.id,
   selector: 't3dd16-speaker-image',
-  pipes: [SafePipe],
   templateUrl: 'speaker-image.component.html',
-  styleUrls: [ 'speaker-image.component.css' ]
+  styleUrls: [ 'speaker-image.component.scss' ]
 })
 export class SpeakerImageComponent {
 

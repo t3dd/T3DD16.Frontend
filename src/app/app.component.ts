@@ -1,34 +1,21 @@
-declare function ga(command: string, type: string, url?: string);
-
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FORM_PROVIDERS, COMMON_DIRECTIVES } from '@angular/common';
-import { ROUTER_DIRECTIVES, Router, NavigationEnd } from '@angular/router';
-import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
-
-import { HeaderComponent, FooterComponent, SidenavContentComponent } from './layout';
-import { CmsService } from './shared';
-import { environment } from './environment';
+import { Router, NavigationEnd } from '@angular/router';
+import { environment } from './environments/environment';
 
 @Component({
-  moduleId: module.id,
   selector: 't3dd16-root',
-  providers: [ FORM_PROVIDERS, CmsService ],
-  directives: [
-    ROUTER_DIRECTIVES, COMMON_DIRECTIVES, MD_SIDENAV_DIRECTIVES,
-    HeaderComponent, FooterComponent, SidenavContentComponent
-  ],
   templateUrl: 'app.component.html',
   styleUrls: [
-    'styles/scaffolding.css',
-    'styles/animation.css',
-    'styles/layout.css',
-    'styles/type.css',
-    'styles/buttons.css',
-    'styles/forms.css',
-    'styles/table.css',
-    'styles/card.css',
-    'styles/modal.css',
-    'styles/sponsors.css'
+    'styles/scaffolding.scss',
+    'styles/animation.scss',
+    'styles/layout.scss',
+    'styles/type.scss',
+    'styles/buttons.scss',
+    'styles/forms.scss',
+    'styles/table.scss',
+    'styles/card.scss',
+    'styles/modal.scss',
+    'styles/sponsors.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })

@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 function isString(value) {
@@ -15,18 +15,16 @@ function isInternalLink(link: string): boolean {
 }
 
 @Directive({
-  selector: 'a[href]',
-  host: {
-    '(click)': 'onClick()'
-  }
+  selector: 'a[href]'
 })
-export class ContentLink {
+export class ContentLinkDirective {
   @Input() href: string;
   @Input() target: string;
 
   constructor(private router: Router) {
   }
 
+  @HostListener('click')
   onClick(): boolean {
     if (this.target !== '_blank' && isString(this.href) && isInternalLink(this.href)) {
       this.router.navigateByUrl(this.href.replace (/^[a-z]{4,5}\:\/{2}[a-z]{1,}\:[0-9]{1,4}.(.*)/, '$1').replace(/^\/|\/$/g, ''));

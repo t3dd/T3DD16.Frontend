@@ -1,9 +1,8 @@
-import { provideRouter, RouterConfig, CanActivate }  from '@angular/router';
+import { RouterModule, Routes }  from '@angular/router';
 import { PageComponent } from './page';
-import { SessionCreateComponent, SessionDetailComponent } from './session';
-import { AuthGuard } from './auth.guard';
+import { SessionDetailComponent } from './session';
 
-const routes: RouterConfig = [
+const routes: Routes = [
   {
     path: 'sessions',
     children: [
@@ -14,17 +13,6 @@ const routes: RouterConfig = [
         },
         children: [
           {path: '', component: PageComponent}
-        ]
-      },
-      {
-        path: 'new',
-        data: {
-          path: 'sessions'
-        },
-        canActivate: [AuthGuard],
-        children: [
-          {path: '', component: PageComponent},
-          {path: '', component: SessionCreateComponent, outlet: 'modal'}
         ]
       },
       {
@@ -49,6 +37,4 @@ const routes: RouterConfig = [
   }
 ];
 
-export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes)
-];
+export const routing = RouterModule.forRoot(routes);
