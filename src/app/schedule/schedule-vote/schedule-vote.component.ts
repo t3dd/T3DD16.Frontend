@@ -1,18 +1,18 @@
-declare function ga(command: string, type: string, config?: any);
-
 import { Component, Input, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Session, User } from '../../model';
 import { UserService, VoteService } from '../../shared';
+import { Vote } from '../../model/vote';
 
 @Component({
-  selector: 't3dd16-session-vote',
-  templateUrl: 'session-vote.component.html',
-  styleUrls: ['session-vote.component.scss']
+  selector: 't3dd16-schedule-vote',
+  templateUrl: 'schedule-vote.component.html',
+  styleUrls: ['schedule-vote.component.scss']
 })
-export class SessionVoteComponent implements AfterViewInit {
+export class ScheduleVoteComponent implements AfterViewInit {
 
   @Input() session: Session;
+  votes: Vote[];
   voted: boolean = false;
   loggedIn: boolean = false;
 
@@ -45,7 +45,6 @@ export class SessionVoteComponent implements AfterViewInit {
 
   private createVote() {
     this.voted = true;
-    this.session.votes++;
 
     ga('send', 'event', {
       'eventCategory': 'voting',
@@ -60,12 +59,12 @@ export class SessionVoteComponent implements AfterViewInit {
         return Observable.throw(errMsg);
       })
       .subscribe(() => {
+        this.votes.push({session: this.session.__identity});
       });
   }
 
   private removeVote() {
     this.voted = false;
-    this.session.votes--;
 
     ga('send', 'event', {
       'eventCategory': 'voting',
@@ -80,15 +79,20 @@ export class SessionVoteComponent implements AfterViewInit {
         return Observable.throw(errMsg);
       })
       .subscribe(() => {
+        let vote = this.votes.filter((vote: Vote) => {
+          return vote.session === this.session.__identity;
+        })[0];
+        delete this.votes[this.votes.indexOf(vote)];
       });
   }
 
   private fetchVotes() {
-    this.voteService.get().subscribe((votes) => {
+    this.voteService.get().subscribe((votes: Vote[]) => {
       this.loggedIn = true;
+      this.votes = votes;
 
       if (this.session) {
-        this.voted = votes.some((vote) => {
+        this.voted = votes.some((vote: Vote) => {
           return vote.session === this.session.__identity;
         });
       }

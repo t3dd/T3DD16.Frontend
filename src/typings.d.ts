@@ -5,4 +5,4 @@
 declare var System: any;
 declare var module: { id: string };
 declare var require: any;
-declare function ga(command: string, type: string, url?: string);
+declare function ga(command: string, type: string, config?: any);

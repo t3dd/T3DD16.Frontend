@@ -56,6 +56,10 @@
   max-height: calc(100vh - 60px - 80px - 50px);
   overflow-x: hidden;
   overflow-y: auto;
+
+  + .modal-body {
+    border-top: 1px solid #eee;
+  }
 }
 
 .modal-footer {

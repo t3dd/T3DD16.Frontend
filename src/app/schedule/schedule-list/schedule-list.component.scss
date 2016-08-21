@@ -1,0 +1,52 @@
+@import "../../base";
+
+.card__header,
+.card__content {
+  padding: 16px;
+
+  @include breakpoint(tablet) {
+    padding: 16px 32px;
+  }
+}
+
+.filter {
+  a {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 16px 24px;
+    text-decoration: none;
+    border-bottom: 0 none;
+
+    &.active {
+      color: $md-accent;
+      border-bottom: 2px $md-accent solid;
+    }
+  }
+}
+
+.item-row {
+  min-height: 40px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.item-row__highlighted {
+  font-weight: bold;
+}
+
+.time {
+  color: #515151;
+}
+
+svg,
+.time,
+t3dd16-schedule-vote {
+  height: 24px;
+  margin-right: 12px;
+
+  @include breakpoint(tablet) {
+    margin-right: 40px;
+  }
+}
+

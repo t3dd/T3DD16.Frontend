@@ -6,12 +6,13 @@ import { MdSidenavModule } from '@angular2-material/sidenav';
 import { AppComponent } from './app.component';
 import { routing } from './app.routes';
 import { ContentLinkDirective } from './content-link.directive';
-import { CmsService, HttpService, SessionService, UserService, VoteService } from './shared';
+import { CmsService, HttpService, SessionService, ScheduleService, UserService, VoteService } from './shared';
 import { APP_PIPES } from './pipes';
 import { LAYOUT_COMPONENTS } from './layout';
 import { LoginComponent } from './login';
 import { PageComponent } from './page';
 import { SESSION_COMPONENTS } from './session';
+import { SCHEDULE_COMPONENTS } from './schedule';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SESSION_COMPONENTS } from './session';
     PageComponent,
     ...APP_PIPES,
     ...LAYOUT_COMPONENTS,
-    ...SESSION_COMPONENTS
+    ...SESSION_COMPONENTS,
+    ...SCHEDULE_COMPONENTS
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { SESSION_COMPONENTS } from './session';
     CmsService,
     HttpService,
     SessionService,
+    ScheduleService,
     UserService,
     VoteService,
     Title

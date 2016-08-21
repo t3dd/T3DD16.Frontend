@@ -1,0 +1,26 @@
+<div class="filter">
+  <a [class.active]="!filter.day" (click)="setFilter('day', '')">All</a>
+  <a [class.active]="filter.day === day.name" (click)="setFilter('day', day.name)" *ngFor="let day of sessionsByDay">{{day.name}}</a>
+</div>
+
+
+<div class="list">
+  <div class="card" *ngFor="let day of filteredSessions">
+    <div class="card__header"  horizontal layout center>
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+        <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+      </svg>
+      <h3>{{day.name}}</h3>
+    </div>
+    <div class="card__content">
+        <div class="item-row" horizontal layout *ngFor="let session of day.sessions" [class.item-row__highlighted]="session.highlight" (click)="onSelect(session)">
+          <t3dd16-schedule-vote [session]="session"></t3dd16-schedule-vote>
+          <div layout flex horizontal>
+            <div class="time">{{session.start | date:'HH:mm'}}</div>
+            <div class="title">{{session.title}}</div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

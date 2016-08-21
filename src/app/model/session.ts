@@ -1,4 +1,5 @@
 import {User} from './user';
+import {Room} from './room';
 
 export interface Session {
   __identity: number;
@@ -6,10 +7,11 @@ export interface Session {
   description: string;
   date: string;
   lightning: string;
-  start: string;
-  end: string;
+  start: Date|string;
+  end: Date|string;
+  day: string;
   speakers: User[];
-  room: string;
+  room: Room;
   highlight: boolean;
   votes: number;
   links: {

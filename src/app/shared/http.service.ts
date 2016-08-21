@@ -51,6 +51,7 @@ export class HttpService {
 
   delete(url: string) {
     return this.http.delete(environment.endpoint + url, {
+      body: '',
       headers: this.headers,
       withCredentials: true
     }).map(res => res.json());
