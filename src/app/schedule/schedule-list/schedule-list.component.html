@@ -17,7 +17,7 @@
         <div class="item-row" horizontal layout *ngFor="let session of day.sessions" [class.item-row__highlighted]="session.highlight" (click)="onSelect(session)">
           <t3dd16-schedule-vote [session]="session"></t3dd16-schedule-vote>
           <div layout flex horizontal>
-            <div class="time">{{session.start | date:'HH:mm'}}</div>
+            <div class="time">{{session.start | date:'HH:mm' | dateFix}}</div>
             <div class="title">{{session.title}}</div>
           </div>
         </div>
