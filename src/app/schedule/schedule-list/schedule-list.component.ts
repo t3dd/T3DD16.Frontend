@@ -14,8 +14,10 @@ export class ScheduleListComponent implements OnInit {
 
   sessions$: Observable<Session[]>;
   sessionsByDay = [];
+  agendaSessions = [];
+  leisureSessions = [];
   filteredSessions = [];
-  filter = {day: ''};
+  filter = {day: '', topic: 'agenda'};
 
   constructor(private scheduleService: ScheduleService, private router: Router) {
   }
@@ -31,28 +33,64 @@ export class ScheduleListComponent implements OnInit {
       return sessions;
     });
     this.sessions$.subscribe((sessions: Session[]) => {
-      let days = {};
+      let days = {}, agendaSessions = {}, leisureSessions = {};
       sessions.forEach((session) => {
         if (!days[session.day]) {
-          days[session.day] = {
+          let day = {
             name: session.day,
             date: session.start,
             sessions: []
           };
+          days[session.day] = JSON.parse(JSON.stringify(day));
+          agendaSessions[session.day] = JSON.parse(JSON.stringify(day));
+          leisureSessions[session.day] = JSON.parse(JSON.stringify(day));
         }
-        days[session.day].sessions.push(session);
+        if (!session.topics.length) {
+          days[session.day].sessions.push(session);
+        }
+        session.topics.forEach((topic) => {
+          switch (topic.__identity) {
+            case 1:
+              agendaSessions[session.day].sessions.push(session);
+              break;
+            case 2:
+              leisureSessions[session.day].sessions.push(session);
+              break;
+            default:
+              if (days[session.day].sessions.indexOf(session) === -1) {
+                days[session.day].sessions.push(session);
+              }
+          }
+        })
       });
       Object.keys(days).forEach((key) => this.sessionsByDay.push(days[key]));
-      this.filteredSessions = this.sessionsByDay;
+      Object.keys(agendaSessions).forEach((key) => this.agendaSessions.push(agendaSessions[key]));
+      Object.keys(leisureSessions).forEach((key) => this.leisureSessions.push(leisureSessions[key]));
+      this.filteredSessions = this.agendaSessions;
+
+      let filter = JSON.parse(localStorage.getItem('filter'));
+      if (filter) {
+        this.setFilter(filter.name, filter.value);
+      }
     });
   }
 
   setFilter(name, value) {
-    this.filter[name] = value;
-    if (value === '') {
-      this.filteredSessions = this.sessionsByDay;
-    } else {
-      this.filteredSessions = this.sessionsByDay.filter((day) => day.name === value);
+    localStorage.setItem('filter', JSON.stringify({name: name, value: value}));
+
+    switch (name) {
+      case 'day':
+        this.filter = {day: value, topic: ''};
+        this.filteredSessions = this.sessionsByDay.filter((day) => day.name === value);
+        break;
+      case 'topic':
+        this.filter = {day: value, topic: value};
+        if (value === 'agenda') {
+          this.filteredSessions = this.agendaSessions;
+        } else if (value === 'leisure') {
+          this.filteredSessions = this.leisureSessions;
+        }
+        break;
     }
   }
 
