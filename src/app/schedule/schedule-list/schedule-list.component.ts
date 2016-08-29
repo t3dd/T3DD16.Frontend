@@ -63,9 +63,17 @@ export class ScheduleListComponent implements OnInit {
           }
         })
       });
-      Object.keys(days).forEach((key) => this.sessionsByDay.push(days[key]));
-      Object.keys(agendaSessions).forEach((key) => this.agendaSessions.push(agendaSessions[key]));
-      Object.keys(leisureSessions).forEach((key) => this.leisureSessions.push(leisureSessions[key]));
+      ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach((key) => {
+        if (days.hasOwnProperty(key)) {
+          this.sessionsByDay.push(days[key])
+        }
+        if (leisureSessions.hasOwnProperty(key)) {
+          this.agendaSessions.push(agendaSessions[key])
+        }
+        if (leisureSessions.hasOwnProperty(key)) {
+          this.leisureSessions.push(leisureSessions[key])
+        }
+      });
       this.filteredSessions = this.agendaSessions;
 
       let filter = JSON.parse(localStorage.getItem('filter'));
