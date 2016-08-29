@@ -64,13 +64,13 @@ export class ScheduleListComponent implements OnInit {
         })
       });
       ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach((key) => {
-        if (days.hasOwnProperty(key)) {
+        if (days.hasOwnProperty(key) && days[key].sessions.length) {
           this.sessionsByDay.push(days[key])
         }
-        if (leisureSessions.hasOwnProperty(key)) {
+        if (leisureSessions.hasOwnProperty(key) && agendaSessions[key].sessions.length) {
           this.agendaSessions.push(agendaSessions[key])
         }
-        if (leisureSessions.hasOwnProperty(key)) {
+        if (leisureSessions.hasOwnProperty(key) && leisureSessions[key].sessions.length) {
           this.leisureSessions.push(leisureSessions[key])
         }
       });
