@@ -1,23 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { environment } from './environments/environment';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 't3dd16-root',
-  templateUrl: 'app.component.html',
-  styleUrls: [
-    'styles/scaffolding.scss',
-    'styles/animation.scss',
-    'styles/layout.scss',
-    'styles/type.scss',
-    'styles/buttons.scss',
-    'styles/forms.scss',
-    'styles/table.scss',
-    'styles/card.scss',
-    'styles/modal.scss',
-    'styles/sponsors.scss'
-  ],
-  encapsulation: ViewEncapsulation.None
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
 

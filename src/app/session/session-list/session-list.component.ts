@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Session } from '../../model';
 import { SessionService } from '../../shared';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 't3dd16-session-list',

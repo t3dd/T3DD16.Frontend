@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Rx';
 
 import { HttpService } from './http.service';
 import { User } from '../model';
-import { environment } from '../index';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {

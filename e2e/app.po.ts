@@ -1,4 +1,6 @@
-export class AppPage {
+import { browser, element, by } from 'protractor/globals';
+
+export class T3dd16Page {
   navigateTo() {
     return browser.get('/');
   }
